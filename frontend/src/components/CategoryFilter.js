@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from 'react';
 import { Button, ButtonGroup } from 'react-bootstrap';
-import axios from 'axios';
 import '../assets/css/psearch.css';
 
 function CategoryFilter({ onCategorySelect, resetSearch }) {
