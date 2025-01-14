@@ -1,0 +1,87 @@
+/* Custom Styles */
+body {
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .container {
+    max-width: 1200px;
+  }
+  
+  h2, h3 {
+    color: #333;
+    font-weight: 600;
+  }
+  
+  .form-heading {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: #000000;
+    font-weight: 600;
+  }
+  
+  .form-label {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  textarea.form-control {
+    font-size: 1rem;
+    border-radius: 10px;
+    padding: 10px;
+  }
+  
+  input.form-control {
+    font-size: 1rem;
+    border-radius: 10px;
+    padding: 10px;
+  }
+  
+  .btn-primary {
+    background-color: #858586;
+    border-color: #858586;
+    padding: 12px 16px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color: #494949;
+    border-color: #494949;
+  }
+  
+  .row {
+    margin-top: 30px;
+  }
+  
+  form {
+    background-color: #ffffff;
+    
+    padding: 20px;
+  }
+  
+  form .mb-3 {
+    margin-bottom: 20px;
+  }
+  
+  form .form-control {
+    border: 2px solid #ccc;
+    box-sizing: border-box;
+    transition: border 0.3s ease;
+  }
+  
+  form .form-control:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  @media (max-width: 768px) {
+    .col-md-4 {
+      margin-bottom: 20px;
+    }
+  
+    .btn-primary {
+      font-size: 1rem;
+    }
+  }
+  

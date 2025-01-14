@@ -1,0 +1,36 @@
+/* body {
+  font-family: 'San Francisco', sans-serif;
+} */
+
+*{
+  font-family: 'Tan Aegean', serif;
+}
+
+.custom-input-col {
+    max-width: 100%; 
+  }
+  
+  .custom-btn-col {
+    max-width: 10%; 
+  }
+  .logo-size {
+    width: 120px; 
+    height: auto;
+  }
+
+  .d-flex a {
+    color: black !important; /* Force color to black */
+    text-decoration: none !important; /* Remove underline */
+  }
+/* Add to your CSS file */
+button:hover {
+  border-color: #333; /* Darker border on hover */
+  color: #f7f6f6; /* White text on hover */
+}
+
+.category-btn{
+  border-radius: 5px;
+  border: none;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
