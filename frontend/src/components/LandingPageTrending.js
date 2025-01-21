@@ -99,24 +99,24 @@ function LandingPageTrending() {
                       rel="noopener noreferrer"
                       style={{
                         marginTop: 'auto',
-                        marginBottom: '-15px', // To overlap the card
+                        marginBottom: '-15px', 
                         marginLeft: '-10%',
                         padding: '8px 16px',
                         fontSize: '16px',
                         fontWeight: 'bold',
-                        borderColor: 'transparent', // Black border
-                        color: 'white', // White text
-                        backgroundColor: 'darkgrey', // Grey background
-                        cursor: 'pointer', // Pointer cursor on hover
-                        transition: 'background-color 0.3s ease', // Smooth transition for background color change
+                        borderColor: 'transparent',
+                        color: 'white', 
+                        backgroundColor: 'darkgrey', 
+                        cursor: 'pointer', 
+                        transition: 'background-color 0.3s ease', 
                         width: '115%',
                         height: '50px',
                       }}
                       onMouseEnter={(e) => {
-                        e.target.style.backgroundColor = 'grey'; // Dark grey on hover
+                        e.target.style.backgroundColor = 'grey';
                       }}
                       onMouseLeave={(e) => {
-                        e.target.style.backgroundColor = 'darkgrey'; // Original grey when hover ends
+                        e.target.style.backgroundColor = 'darkgrey';
                       }}
                     >
                       View Product

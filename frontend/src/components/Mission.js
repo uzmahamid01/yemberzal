@@ -20,8 +20,7 @@ function Mission() {
       <section id="mission" className="py-5 text-center">
         <h2 className="mb-4" style={{ fontSize: '2.5rem', fontWeight: 'bold' }}>Our Mission</h2>
         <p className="mb-4" style={{ fontSize: '1.2rem', color: '#555', lineHeight: '1.8' }}>
-            Our mission is to connect people with authentic Kashmiri clothing through a seamless search experience.
-            We aim to celebrate Kashmiri culture and craftsmanship by bringing it to the global stage.
+        Yemberzal's mission is to connect people with authentic Kashmiri clothing, crafted by talented Kashmiri designers, artisans, and small businesses. Through a seamless search experience, we aim to celebrate and share the rich culture and craftsmanship of Kashmir with audiences both within the region and around the globe.
         </p>
         
         {/* Key Highlights */}

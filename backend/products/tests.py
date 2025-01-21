@@ -22,4 +22,4 @@ class ProductTests(TestCase):
     def test_create_product(self):
         response = self.client.post('/api/products/', self.product_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        self.assertEqual(Product.objects.count(), 2)  # One product in setUp and one created here
+        self.assertEqual(Product.objects.count(), 2) 

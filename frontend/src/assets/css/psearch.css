@@ -1,6 +1,3 @@
-/* body {
-  font-family: 'San Francisco', sans-serif;
-} */
 
 *{
   font-family: 'Tan Aegean', serif;
@@ -19,13 +16,12 @@
   }
 
   .d-flex a {
-    color: black !important; /* Force color to black */
-    text-decoration: none !important; /* Remove underline */
+    color: black !important; 
+    text-decoration: none !important
   }
-/* Add to your CSS file */
 button:hover {
-  border-color: #333; /* Darker border on hover */
-  color: #f7f6f6; /* White text on hover */
+  border-color: #333; 
+  color: #f7f6f6; 
 }
 
 .category-btn{

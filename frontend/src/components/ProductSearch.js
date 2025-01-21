@@ -15,6 +15,10 @@ function ProductSearch() {
   const [searchPerformed, setSearchPerformed] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [timeoutReached, setTimeoutReached] = useState(false);
+  const [brands, setBrands] = useState([]);
+  const [productCount, setProductCount] = useState(0);
+  const [selectedBrand, setSelectedBrand] = useState('');
+
 
   useEffect(() => {
     let timer;
@@ -27,29 +31,27 @@ function ProductSearch() {
     return () => clearTimeout(timer);
   }, [loading]);
 
-  const handleCategorySelect = (selection) => {
-    if (selection.startsWith('Brand:')) {
-      const brand = selection.split(':')[1];
-      fetchProductsByBrand(brand);
-    } else {
-      setSelectedCategory(selection);
-      if (searchPerformed) {
-        handleSearch();
-      }
-    }
-  };
-
-  const fetchProductsByBrand = async (brand) => {
+  const handleCategorySelect = async (selection) => {
+    if (selectedCategory === selection) return; 
+  
+    setSelectedCategory(selection);
     setLoading(true);
     setError(null);
     setSearchPerformed(true);
     setTimeoutReached(false);
   
     try {
+      const params = {
+        category: selection === 'All' ? '' : selection,
+        q: query || undefined,
+      };
+  
       const response = await axios.get('http://127.0.0.1:8000/api/products/search/', {
-        params: { brand: brand },
+        params: params,
       });
+  
       setProducts(response.data);
+      setProductCount(response.data.length); 
     } catch (err) {
       setError('Failed to fetch products. Please try again.');
       console.error(err);
@@ -57,6 +59,32 @@ function ProductSearch() {
       setLoading(false);
     }
   };
+  
+
+  const fetchProductsByBrand = async (brand) => {
+    if (loading || selectedBrand === brand) return; 
+    setLoading(true);
+    setError(null);
+    setSearchPerformed(true);
+    setTimeoutReached(false);
+  
+    try {
+      const response = await axios.get('http://127.0.0.1:8000/api/products/search/', {
+        params: { brand },
+      });
+  
+      setProducts(response.data);
+      setProductCount(response.data.length); 
+      setSelectedBrand(brand); 
+    } catch (err) {
+      setError('Failed to fetch products. Please try again.');
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+  
+  
 
   const handleSearch = async (e) => {
     if (e) e.preventDefault();
@@ -66,14 +94,17 @@ function ProductSearch() {
     setTimeoutReached(false);
 
     try {
+      const params = {
+        q: query || undefined,
+        category: selectedCategory === 'All' ? '' : selectedCategory,
+      };
+
       const response = await axios.get('http://127.0.0.1:8000/api/products/search/', {
-        params: {
-          q: query,
-          category: selectedCategory !== 'All' ? selectedCategory : undefined,
-        },
+        params: params,
       });
 
       setProducts(response.data);
+      setProductCount(response.data.length);
     } catch (err) {
       setError('Failed to fetch products. Please try again.');
       console.error(err);
@@ -87,7 +118,23 @@ function ProductSearch() {
     setProducts([]);
     setQuery('');
     setSelectedCategory('All');
+    setProductCount(0);
   };
+
+  useEffect(() => {
+    const fetchBrands = async () => {
+      try {
+        const response = await axios.get('http://127.0.0.1:8000/api/brands/');
+        if (response.data) {
+          setBrands(response.data);
+        }
+      } catch (err) {
+        console.error('Error fetching brands:', err);
+      }
+    };
+
+    fetchBrands();
+  }, []);
 
   return (
     <Container className="mt-2">
@@ -161,7 +208,12 @@ function ProductSearch() {
         </Row>
       </Form>
 
-      <CategoryFilter onCategorySelect={handleCategorySelect} resetSearch={resetSearch} />
+      <CategoryFilter 
+        onCategorySelect={handleCategorySelect}
+        resetSearch={resetSearch}
+        fetchProductsByBrand={fetchProductsByBrand}
+        brands={brands}
+      />
 
       {searchPerformed && (
         <div className="search-results">
@@ -181,19 +233,13 @@ function ProductSearch() {
               </Button>
             </div>
           )}
+          <div className="text-center mb-4">
+            <strong>{productCount} products found</strong>
+          </div>
           <Row>
             {products.map((product, index) => (
               <Col md={4} key={index} className="mb-4">
-                <Card 
-                  style={{
-                    height: '650px', 
-                    width: '90%',
-                    align: 'center',
-                    borderRadius: '50px', 
-                    overflow: 'hidden', 
-                    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)'
-                  }}
-                >
+                <Card style={{ height: '650px', width: '90%', align: 'center', borderRadius: '50px', overflow: 'hidden', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
                   <div style={{ height: '70%', overflow: 'hidden', position: 'relative' }}>
                     {product.image && (
                       <img 
@@ -227,7 +273,7 @@ function ProductSearch() {
                       target="_blank"
                       rel="noopener noreferrer"
                       style={{
-                        marginTop: 'auto',    
+                        marginTop: 'auto',
                         marginBottom: '-15px',
                         marginLeft: '-10%',
                         padding: '8px 16px',

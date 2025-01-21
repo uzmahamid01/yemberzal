@@ -1,7 +1,6 @@
 from django_elasticsearch_dsl import DocType, Index, fields
 from .models import Product
 
-# Define an Elasticsearch index
 products = Index('products')
 products.settings(
     number_of_shards=1,
@@ -11,7 +10,7 @@ products.settings(
 @products.document
 class ProductDocument(DocType):
     class Django:
-        model = Product  # Link to your Product model
+        model = Product  
 
     title = fields.TextField()
     description = fields.TextField()

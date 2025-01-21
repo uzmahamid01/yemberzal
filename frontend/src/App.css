@@ -37,3 +37,31 @@
   }
 }
 
+
+.category-btn,
+.dropdown-btn {
+  border: none; 
+  background-color: transparent; 
+  color: #000; 
+  padding: 0.5rem 1rem; 
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 0.25rem; 
+  display: inline-block;
+  box-shadow: none; 
+}
+
+.dropdown-btn .dropdown-toggle::after {
+  display: none; 
+}
+
+.category-btn:hover,
+.dropdown-btn:hover {
+  background-color: #f1f1f1; 
+}
+
+.category-btn:focus,
+.dropdown-btn:focus {
+  outline: none; 
+  box-shadow: none;
+}

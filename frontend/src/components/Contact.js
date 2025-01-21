@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../assets/css/contact.css';
 
+
 function Contact() {
   const [formData, setFormData] = useState({
     name: '',
@@ -10,8 +11,13 @@ function Contact() {
     generalQuery: ''
   });
   
-  const [activeForm, setActiveForm] = useState(null); // Track which form is active
+  const [activeForm, setActiveForm] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
+  const API_URL = process.env.REACT_APP_API_URL || 'https://api.apispreadsheets.com/data/gVwbWXMflPWXkYGn/';
+  console.log('API URL:', API_URL);  
+  console.log('Process Env:', process.env);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -20,13 +26,65 @@ function Contact() {
     });
   };
 
-  const handleSubmit = (e, formType) => {
+  const submitToSpreadsheet = async (formType) => {
+    try {
+      const submissionData = {
+        Name: formData.name,
+        Email: formData.email,
+        "Report Bug": formType === 'Bug Report' ? formData.bugReport : "",
+        "Collab": formType === 'Product Addition' ? formData.productRequest : "",
+        "General question": formType === 'General Query' ? formData.generalQuery : ""
+      };
+
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          data: submissionData
+        }),
+      });
+
+      if (response.status === 201) {
+        return true;
+      } else {
+        throw new Error('Failed to submit form');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      return false;
+    }
+  };
+
+  const handleSubmit = async (e, formType) => {
     e.preventDefault();
-    alert(`${formType} form submitted!`);
+    setIsSubmitting(true);
+
+    try {
+      const success = await submitToSpreadsheet(formType);
+      if (success) {
+        alert(`${formType} submitted successfully!`);
+        setFormData({
+          name: '',
+          email: '',
+          bugReport: '',
+          productRequest: '',
+          generalQuery: ''
+        });
+        setActiveForm(null);
+      } else {
+        alert('Failed to submit form. Please try again.');
+      }
+    } catch (error) {
+      alert('An error occurred. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const toggleForm = (formName) => {
-    setActiveForm(activeForm === formName ? null : formName); // Toggle active form
+    setActiveForm(activeForm === formName ? null : formName);
   };
 
   return (
@@ -116,7 +174,13 @@ function Contact() {
                       required
                     />
                   </div>
-                  <button type="submit" className="btn btn-primary w-100">Submit Bug Report</button>
+                  <button 
+                    type="submit" 
+                    className="btn btn-primary w-100"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? 'Submitting...' : 'Submit Bug Report'}
+                  </button>
                 </form>
               </div>
             )}
@@ -159,7 +223,13 @@ function Contact() {
                       required
                     />
                   </div>
-                  <button type="submit" className="btn btn-primary w-100">Submit Product</button>
+                  <button 
+                    type="submit" 
+                    className="btn btn-primary w-100"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? 'Submitting...' : 'Submit Product'}
+                  </button>
                 </form>
               </div>
             )}
@@ -202,7 +272,13 @@ function Contact() {
                       required
                     />
                   </div>
-                  <button type="submit" className="btn btn-primary w-100">Submit Message</button>
+                  <button 
+                    type="submit" 
+                    className="btn btn-primary w-100"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? 'Submitting...' : 'Submit Message'}
+                  </button>
                 </form>
               </div>
             )}
