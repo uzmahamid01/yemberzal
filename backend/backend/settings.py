@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-%99f75izjc5ege2*%kg*)6!499b21%5#_cr9x7ix967k=anc&@
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # Make sure DEBUG is False in production
-DEBUG = False if os.environ.get('DJANGO_ENV') == 'production' else True
+DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
+
 
 # ALLOWED_HOSTS = ['*]
 ALLOWED_HOSTS = ['yemberzal-app-28481d1d0b39.herokuapp.com', 'localhost', '127.0.0.1']
@@ -72,7 +73,7 @@ ROOT_URLCONF = 'backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR.parent / 'frontend/build'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -94,14 +95,16 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'HOST': os.getenv('SUPABASE_HOST'),
+        'HOST': os.getenv('DATABASE_URL') if os.getenv('DATABASE_URL') else os.getenv('SUPABASE_HOST'),
         'PORT': os.getenv('SUPABASE_PORT'),
         'NAME': os.getenv('SUPABASE_NAME'),
         'USER': os.getenv('SUPABASE_USER'),
         'PASSWORD': os.getenv('SUPABASE_PASSWORD'),
+        'OPTIONS': {
+            'sslmode': 'require'
+        }
     }
 }
-
 
 
 # Password validation
@@ -153,10 +156,9 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # React dev server
-    "https://your-production-react-app.com",  # For production
+    "http://localhost:3000",
+    f"https://{os.getenv('ALLOWED_HOST', 'yemberzal-app-28481d1d0b39.herokuapp.com')}"
 ]
-
 CORS_ALLOW_METHODS = [
     'GET',
     'POST',
