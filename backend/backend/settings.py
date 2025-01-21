@@ -52,6 +52,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "whitenoise.middleware.WhiteNoiseMiddleware", 
+    "whitenoise.middleware.WhiteNoiseMiddleware",  # Add this line
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -138,10 +139,9 @@ STATIC_URL = 'static/'
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
-# STATICFILES_DIRS = [
-#     BASE_DIR.parent / 'frontend/build/static',
-# ]
-STATICFILES_DIRS = [BASE_DIR / "frontend/build/static"]
+STATICFILES_DIRS = [
+    BASE_DIR.parent / 'frontend/build/static',
+]
 
 
 # Default primary key field type
