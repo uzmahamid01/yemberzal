@@ -144,7 +144,7 @@ function ProductSearch() {
         <div className="d-flex align-items-center">
           {/* <img src="/logo1.png" alt="Yemberzal" className="me-3 logo-size" /> */}
           {/* <img src={`${process.env.PUBLIC_URL}/logo1.png`}alt="Yemberzal" className="me-3 logo-size" /> */}
-          <img src="{% static 'images/logo1.png' %}" alt="Logo" />
+          <img src="https://uzmah.netlify.app/p2_files/50.png" alt="Logo" />
 
         </div>
         <div className="d-flex fs-4">
