@@ -50,10 +50,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'products',
 ]
-
+ALLOWED_HOSTS = ["*"]
 MIDDLEWARE = [
     "whitenoise.middleware.WhiteNoiseMiddleware", 
-    "whitenoise.middleware.WhiteNoiseMiddleware",  # Add this line
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -164,3 +163,7 @@ CORS_ALLOW_METHODS = [
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
+import dj_database_url
+
+prod_db = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(prod_db)
