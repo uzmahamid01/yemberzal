@@ -6,6 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/css/psearch.css';
 import LandingPageTrending from './LandingPageTrending';
 import CategoryFilter from './CategoryFilter';
+import logo1 from '../assets/images/logo1.png';
+import logo2 from '../assets/images/logo2.png';
 
 function ProductSearch() {
   const [query, setQuery] = useState('');
@@ -140,7 +142,8 @@ function ProductSearch() {
     <Container className="mt-2">
       <header className="d-flex justify-content-between align-items-center mb-3">
         <div className="d-flex align-items-center">
-          <img src="/logo1.png" alt="Yemberzal" className="me-3 logo-size" />
+          {/* <img src="/logo1.png" alt="Yemberzal" className="me-3 logo-size" /> */}
+          <img src={logo1} alt="Yemberzal" className="me-3 logo-size" />
         </div>
         <div className="d-flex fs-4">
           <Link to="/mission" className="me-3 text-decoration-none">mission</Link>
@@ -150,7 +153,7 @@ function ProductSearch() {
       </header>
 
       <img
-        src="/logo2.png"
+        src={logo2}
         alt="Yemberzal"
         className="d-block mx-auto"
         style={{
