@@ -3,5 +3,9 @@
     "@supabase/supabase-js": "^2.47.3",
     "dotenv": "^16.4.7",
     "react-router-dom": "^6.28.0"
-  }
+  },
+  "scripts": {
+    "heroku-postbuild": "cd frontend && npm install && npm run build"
+}
+
 }
