@@ -6,8 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/css/psearch.css';
 import LandingPageTrending from './LandingPageTrending';
 import CategoryFilter from './CategoryFilter';
-import logo1 from '../assets/images/logo1.png';
-import logo2 from '../assets/images/logo2.png';
+
 
 function ProductSearch() {
   const [query, setQuery] = useState('');
@@ -150,7 +149,7 @@ function ProductSearch() {
           <img src={require('../assets/images/logo1.png')} alt="Yemberzal6" className="me-3 logo-size" />
         </div>
         <div className="d-flex fs-4">
-          <Link to="/mission" className="me-3 text-decoration-none">mission</Link>
+          <Link to="/mission" className="me-3 text-decoration-none">missionn</Link>
           <Link to="/about" className="me-3 text-decoration-none">about</Link>
           <Link to="/contact" className="text-decoration-none">contact</Link>
         </div>

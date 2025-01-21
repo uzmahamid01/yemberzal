@@ -1,7 +1,6 @@
 import React from 'react';
 import '../assets/css/about.css';
 import logo1 from '../assets/images/logo1.png';
-
 function About() {
   return (
     <div className="container mt-4">
