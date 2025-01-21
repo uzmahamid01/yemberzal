@@ -5,7 +5,12 @@
     "react-router-dom": "^6.28.0"
   },
   "scripts": {
-    "heroku-postbuild": "cd frontend && npm install && npm run build"
-}
+    "build": "cd frontend && npm install && npm run build",
+    "heroku-postbuild": "npm run build"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
 
 }
