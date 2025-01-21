@@ -25,9 +25,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-%99f75izjc5ege2*%kg*)6!499b21%5#_cr9x7ix967k=anc&@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# Make sure DEBUG is False in production
+DEBUG = False if os.environ.get('DJANGO_ENV') == 'production' else True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['*]
+ALLOWED_HOSTS = ['yemberzal-app-28481d1d0b39.herokuapp.com', 'localhost', '127.0.0.1']
+
+
 
 SUPABASE_URL = os.getenv('SUPABASE_URL')
 SUPABASE_KEY = os.getenv('SUPABASE_KEY')
@@ -50,7 +54,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'products',
 ]
-ALLOWED_HOSTS = ["*"]
 MIDDLEWARE = [
     "whitenoise.middleware.WhiteNoiseMiddleware", 
     'django.middleware.security.SecurityMiddleware',
