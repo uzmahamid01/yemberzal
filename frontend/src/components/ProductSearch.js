@@ -149,7 +149,7 @@ function ProductSearch() {
           <img src={require('../assets/images/logo1.png')} alt="Yemberzal6" className="me-3 logo-size" />
         </div>
         <div className="d-flex fs-4">
-          <Link to="/mission" className="me-3 text-decoration-none">missionnnn</Link>
+          <Link to="/mission" className="me-3 text-decoration-none">check</Link>
           <Link to="/about" className="me-3 text-decoration-none">about</Link>
           <Link to="/contact" className="text-decoration-none">contact</Link>
         </div>
