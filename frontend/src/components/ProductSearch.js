@@ -142,13 +142,12 @@ function ProductSearch() {
     <Container className="mt-2">
       <header className="d-flex justify-content-between align-items-center mb-3">
         <div className="d-flex align-items-center">
-          <img src="/logo1.png" alt="Yemberzal1" className="me-3 logo-size" />
-          <img src="/assets/images/logo1.png" alt="Yemberzal2" className="me-3 logo-size" />
+          {/* <img src="/logo1.png" alt="Yemberzal1" className="me-3 logo-size" />
+          <img src="../assets/images/logo1.png" alt="Yemberzal2" className="me-3 logo-size" />
           <img src={`${process.env.PUBLIC_URL}/logo1.png`}alt="Yemberzal3" className="me-3 logo-size" />
           <img src="https://uzmah.netlify.app/p2_files/50.png" alt="Yemberzal4" className="me-3 logo-size" />
-          <img src={logo1} alt="Yemberzal5" className="me-3 logo-size" />
-          <img src={require('./assets/images/logo1.png')} alt="Yemberzal6" className="me-3 logo-size" />
-
+          <img src={logo1} alt="Yemberzal5" className="me-3 logo-size" /> */}
+          <img src={require('../assets/images/logo1.png')} alt="Yemberzal6" className="me-3 logo-size" />
         </div>
         <div className="d-flex fs-4">
           <Link to="/mission" className="me-3 text-decoration-none">mission</Link>
@@ -158,7 +157,7 @@ function ProductSearch() {
       </header>
 
       <img
-        src={`${process.env.PUBLIC_URL}/logo2.png`}
+        src={require('../assets/images/logo2.png')} 
         alt="Yemberzal"
         className="d-block mx-auto"
         style={{
