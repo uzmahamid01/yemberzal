@@ -150,7 +150,7 @@ function ProductSearch() {
         </div>
         <div className="d-flex fs-4">
           <Link to="/mission" className="me-3 text-decoration-none">mission</Link>
-          <Link to="/about" className="me-3 text-decoration-none">about</Link>
+          <Link to="/about" className="me-3 text-decoration-none">aboutt</Link>
           <Link to="/contact" className="text-decoration-none">contact</Link>
         </div>
       </header>
