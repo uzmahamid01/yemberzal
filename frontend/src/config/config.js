@@ -1,4 +1,5 @@
 // Place this at: frontend/src/config/config.js
+import axios from 'axios';
 
 const getApiBaseUrl = () => {
     if (process.env.NODE_ENV === 'production') {
@@ -15,7 +16,6 @@ const getApiBaseUrl = () => {
   };
   
   // If using axios
-  import axios from 'axios';
   const apiClient = axios.create(apiConfig);
   
   export default apiClient;

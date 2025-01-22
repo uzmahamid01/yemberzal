@@ -6,7 +6,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/css/psearch.css';
 import LandingPageTrending from './LandingPageTrending';
 import CategoryFilter from './CategoryFilter';
-import apiClient from '../config/config';
 
 
 function ProductSearch() {
