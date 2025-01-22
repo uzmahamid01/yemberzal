@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-%99f75izjc5ege2*%kg*)6!499b21%5#_cr9x7ix967k=anc&@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 SUPABASE_URL = os.getenv('SUPABASE_URL')
 SUPABASE_KEY = os.getenv('SUPABASE_KEY')
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'products',
+    'sslserver',
 ]
 
 MIDDLEWARE = [
