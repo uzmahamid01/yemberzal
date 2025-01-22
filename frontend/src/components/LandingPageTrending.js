@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Row, Col, Card, Button } from 'react-bootstrap';
 import '../assets/css/psearch.css';
+import apiClient from '../config/config';
 
 function LandingPageTrending() {
   const [trendingProducts, setTrendingProducts] = useState([]);
@@ -15,7 +16,8 @@ function LandingPageTrending() {
 
       try {
         // Make sure to use http:// not https:// and include the full URL
-        const response = await axios.get('http://127.0.0.1:8000/api/products/trending/', {
+        // const response = await axios.get('http://127.0.0.1:8000/api/products/trending/', {
+          const response = await apiClient.get('/products/trending/', {
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',

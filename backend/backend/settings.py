@@ -182,8 +182,10 @@ CORS_ALLOW_METHODS = [
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
+    "https://yemberzal-app-28481d1d0b39.herokuapp.com",
     "http://localhost:3000",  # Note the http:// not https://
     "http://127.0.0.1:3000",
+
 ]
 import dj_database_url
 
