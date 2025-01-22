@@ -56,7 +56,6 @@ INSTALLED_APPS = [
     'products',
 ]
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
     "whitenoise.middleware.WhiteNoiseMiddleware", 
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -65,12 +64,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
+    'corsheaders.middleware.CorsMiddleware',
 ]
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
-# SECURE_SSL_REDIRECT = True
-
 
 ROOT_URLCONF = 'backend.urls'
 
@@ -174,31 +170,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #     "http://localhost:3000",
 #     f"https://{os.getenv('ALLOWED_HOST', 'yemberzal-app-28481d1d0b39.herokuapp.com')}"
 # ]
-
-# CORS_ALLOWED_ORIGINS = [
-#     'https://yemberzal-app-28481d1d0b39.herokuapp.com',  # Add your frontend URL here
-# ]
-
 CORS_ALLOW_METHODS = [
     'GET',
     'POST',
     'PUT',
     'DELETE',
     'PATCH',
-    'OPTIONS'
-]
-
-CORS_ALLOW_HEADERS = [
-    'Authorization',
-    'Content-Type',
-    'X-Requested-With',
-    'Accept',
-    'Origin',
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
-CORS_ALLOW_CREDENTIALS = True
-SECURE_SSL_REDIRECT = True
+
 import dj_database_url
 
 prod_db = dj_database_url.config(conn_max_age=500)
