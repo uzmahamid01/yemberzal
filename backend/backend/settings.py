@@ -29,8 +29,8 @@ SECRET_KEY = 'django-insecure-%99f75izjc5ege2*%kg*)6!499b21%5#_cr9x7ix967k=anc&@
 DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
 
 
-# ALLOWED_HOSTS = ['*]
-ALLOWED_HOSTS = ['yemberzal-app-28481d1d0b39.herokuapp.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = ['yemberzal-app-28481d1d0b39.herokuapp.com', 'localhost', '127.0.0.1']
 
 
 

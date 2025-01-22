@@ -100,7 +100,7 @@ function ProductSearch() {
         category: selectedCategory === 'All' ? '' : selectedCategory,
       };
 
-      const response = await axios.get('http://127.0.0.1:8000/api/products/search/', {
+      const response = await axios.get('/api/products/search/', {
         params: params,
       });
 
@@ -125,7 +125,7 @@ function ProductSearch() {
   useEffect(() => {
     const fetchBrands = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/brands/');
+        const response = await axios.get('/api/brands/');
         if (response.data) {
           setBrands(response.data);
         }
