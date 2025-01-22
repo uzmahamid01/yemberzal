@@ -68,6 +68,9 @@ MIDDLEWARE = [
 ]
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
+SECURE_SSL_REDIRECT = True
+
+
 ROOT_URLCONF = 'backend.urls'
 
 TEMPLATES = [
