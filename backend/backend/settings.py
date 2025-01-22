@@ -27,6 +27,7 @@ SECRET_KEY = 'django-insecure-%99f75izjc5ege2*%kg*)6!499b21%5#_cr9x7ix967k=anc&@
 # SECURITY WARNING: don't run with debug turned on in production!
 # Make sure DEBUG is False in production
 DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
+SECURE_SSL_REDIRECT = False
 
 
 ALLOWED_HOSTS = ['*']
@@ -65,8 +66,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
-
 ]
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
@@ -182,7 +181,10 @@ CORS_ALLOW_METHODS = [
 
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
-
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  # Note the http:// not https://
+    "http://127.0.0.1:3000",
+]
 import dj_database_url
 
 prod_db = dj_database_url.config(conn_max_age=500)

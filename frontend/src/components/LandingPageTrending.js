@@ -14,11 +14,20 @@ function LandingPageTrending() {
       setError(null);
 
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/products/trending/');
-        setTrendingProducts(response.data);
+        // Make sure to use http:// not https:// and include the full URL
+        const response = await axios.get('http://127.0.0.1:8000/api/products/trending/', {
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+        });
+        
+        if (response.data) {
+          setTrendingProducts(response.data);
+        }
       } catch (err) {
-        setError('Failed to fetch trending products.');
-        console.error(err);
+        console.error('Detailed error:', err);
+        setError('Failed to fetch trending products. Please try again later.');
       } finally {
         setLoading(false);
       }
