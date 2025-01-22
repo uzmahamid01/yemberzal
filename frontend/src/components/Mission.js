@@ -65,7 +65,7 @@ function Mission() {
             <div className="quote-text">
                 <blockquote className="blockquote">
                     <p style={{ fontSize: '2rem', fontStyle: 'italic', color: '#333', lineHeight: '1.5' }}>
-                        "The art of Kashmir is the soul of the valley woven into every thread."
+                        "The art of Kashmir is the soul of the valley woven into every thread.."
                     </p>
                     <footer className="blockquote-footer mt-4">
                         <cite style={{ fontSize: '1.2rem', color: '#555' }}>Yemberzal Team</cite>

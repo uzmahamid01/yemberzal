@@ -174,9 +174,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #     f"https://{os.getenv('ALLOWED_HOST', 'yemberzal-app-28481d1d0b39.herokuapp.com')}"
 # ]
 
-CORS_ALLOWED_ORIGINS = [
-    'https://yemberzal-app-28481d1d0b39.herokuapp.com',  # Add your frontend URL here
-]
+# CORS_ALLOWED_ORIGINS = [
+#     'https://yemberzal-app-28481d1d0b39.herokuapp.com',  # Add your frontend URL here
+# ]
 
 CORS_ALLOW_METHODS = [
     'GET',
@@ -186,7 +186,7 @@ CORS_ALLOW_METHODS = [
     'PATCH',
 ]
 
-# CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 
 
