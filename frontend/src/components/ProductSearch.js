@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+// import axios from 'axios';
 import { Container, Form, Button, Row, Col, Card } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/css/psearch.css';
 import LandingPageTrending from './LandingPageTrending';
 import CategoryFilter from './CategoryFilter';
+import apiClient from '../config/config';
 
 
 function ProductSearch() {
@@ -47,7 +48,8 @@ function ProductSearch() {
         q: query || undefined,
       };
   
-      const response = await axios.get('http://127.0.0.1:8000/api/products/search/', {
+      // const response = await axios.get('http://127.0.0.1:8000/api/products/search/', {
+      const response = await apiClient.get('/products/search/',{
         params: params,
       });
   
@@ -70,7 +72,8 @@ function ProductSearch() {
     setTimeoutReached(false);
   
     try {
-      const response = await axios.get('http://127.0.0.1:8000/api/products/search/', {
+      // const response = await axios.get('http://127.0.0.1:8000/api/products/search/', {
+      const response = await apiClient.get('/products/search/',{
         params: { brand },
       });
   
@@ -100,7 +103,8 @@ function ProductSearch() {
         category: selectedCategory === 'All' ? '' : selectedCategory,
       };
 
-      const response = await axios.get('/api/products/search/', {
+      // const response = await axios.get('/api/products/search/', {
+      const response = await apiClient.get('/products/search/',{
         params: params,
       });
 
@@ -125,7 +129,8 @@ function ProductSearch() {
   useEffect(() => {
     const fetchBrands = async () => {
       try {
-        const response = await axios.get('/api/brands/');
+        // const response = await axios.get('/api/brands/');
+        const response = await apiClient.get('/brands/');
         if (response.data) {
           setBrands(response.data);
         }
