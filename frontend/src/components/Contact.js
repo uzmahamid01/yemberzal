@@ -92,7 +92,7 @@ function Contact() {
       {/* Header */}
       <header className="d-flex justify-content-between align-items-center mb-4">
         <div className="d-flex align-items-center">
-        <img src={`${process.env.PUBLIC_URL}/logo1.png`}alt="Yemberzal3" className="me-3 logo-size" />
+        <img src={require('../assets/images/logo1.png')} alt="Yemberzal6" className="me-3 logo-size" />
         </div>
         <div className="d-flex fs-4">
           <a href="/" className="me-3 text-decoration-none">home</a>

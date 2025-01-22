@@ -189,7 +189,6 @@ CORS_ALLOW_METHODS = [
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 
-
 import dj_database_url
 
 prod_db = dj_database_url.config(conn_max_age=500)
