@@ -166,10 +166,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    f"https://{os.getenv('ALLOWED_HOST', 'yemberzal-app-28481d1d0b39.herokuapp.com')}"
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:3000",
+#     f"https://{os.getenv('ALLOWED_HOST', 'yemberzal-app-28481d1d0b39.herokuapp.com')}"
+# ]
 CORS_ALLOW_METHODS = [
     'GET',
     'POST',
@@ -179,6 +179,7 @@ CORS_ALLOW_METHODS = [
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
+
 import dj_database_url
 
 prod_db = dj_database_url.config(conn_max_age=500)
