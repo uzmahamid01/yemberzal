@@ -13,15 +13,15 @@ function CombinedPage() {
                     .from('visit_counts')
                     .select('count')
                     .single();
-                
+    
                 if (error) throw error;
-                
-                setVisitCount(data.count);
+    
+                setVisitCount(data ? data.count : 0);
             } catch (error) {
                 console.error('Error fetching visit count:', error);
             }
         }
-
+    
         // Increment visit count
         async function incrementVisitCount() {
             try {
@@ -31,21 +31,22 @@ function CombinedPage() {
                         'Content-Type': 'application/json',
                     },
                 });
-                
+    
                 if (!response.ok) {
                     throw new Error('Failed to increment visit count');
                 }
-                
+    
                 const data = await response.json();
                 setVisitCount(data.count);
             } catch (error) {
                 console.error('Error incrementing visit count:', error);
             }
         }
-
+    
         fetchVisitCount();
         incrementVisitCount();
     }, []);
+    
 
   return (
     <div className="container py-5">
