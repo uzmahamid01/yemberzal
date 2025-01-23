@@ -3,31 +3,47 @@ import '../assets/css/mission.css';
 import { supabase } from '../supabaseClient';
 
 function Mission() {
-
     const [visitCount, setVisitCount] = useState(0);
 
     useEffect(() => {
+        // Fetch initial visit count from Supabase
         async function fetchVisitCount() {
-            const { data, error } = await supabase
-                .from('visit_counts')
-                .select('count')
-                .single();
-            
-            if (error) {
-                console.error('Error fetching visit count:', error);
-            } else {
+            try {
+                const { data, error } = await supabase
+                    .from('visit_counts')
+                    .select('count')
+                    .single();
+                
+                if (error) throw error;
+                
                 setVisitCount(data.count);
+            } catch (error) {
+                console.error('Error fetching visit count:', error);
+            }
+        }
+
+        // Increment visit count
+        async function incrementVisitCount() {
+            try {
+                const response = await fetch('/api/increment-visit-count/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Failed to increment visit count');
+                }
+                
+                const data = await response.json();
+                setVisitCount(data.count);
+            } catch (error) {
+                console.error('Error incrementing visit count:', error);
             }
         }
 
         fetchVisitCount();
-    }, []);
-
-    useEffect(() => {
-        async function incrementVisitCount() {
-            await fetch('/api/increment-visit-count'); // Trigger the backend API
-        }
-    
         incrementVisitCount();
     }, []);
 
