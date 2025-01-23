@@ -1,18 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import '../assets/css/mission.css';
+import { supabase } from '../supabaseClient';
 
 function Mission() {
 
     const [visitCount, setVisitCount] = useState(0);
 
     useEffect(() => {
-        const storedVisits = localStorage.getItem('visitCount');
-        const currentVisitCount = storedVisits ? parseInt(storedVisits) : 0;
+        async function fetchVisitCount() {
+            const { data, error } = await supabase
+                .from('visit_counts')
+                .select('count')
+                .single();
+            
+            if (error) {
+                console.error('Error fetching visit count:', error);
+            } else {
+                setVisitCount(data.count);
+            }
+        }
+
+        fetchVisitCount();
+    }, []);
+
+    useEffect(() => {
+        async function incrementVisitCount() {
+            await fetch('/api/increment-visit-count'); // Trigger the backend API
+        }
     
-        const newVisitCount = currentVisitCount + 1;
-        localStorage.setItem('visitCount', newVisitCount);
-        setVisitCount(newVisitCount);
-      }, []);
+        incrementVisitCount();
+    }, []);
 
   return (
     <div className="container py-5">

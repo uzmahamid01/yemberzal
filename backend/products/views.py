@@ -154,3 +154,24 @@ class SearchProductsView(APIView):
                 },
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR
             )
+
+
+# Increment the visit count
+def increment_visit_count():
+    try:
+        # Fetch the current visit count
+        visit_count = supabase.table('visit_counts').select('count').single().execute()
+
+        if visit_count.data:
+            # Increment the count
+            new_count = visit_count.data['count'] + 1
+            # Update the visit count in the database
+            supabase.table('visit_counts').update({'count': new_count}).eq('id', 1).execute()
+            return new_count
+        else:
+            # If no record exists, initialize it
+            supabase.table('visit_counts').insert({'count': 1}).execute()
+            return 1
+    except Exception as e:
+        logger.error(f"Error updating visit count: {str(e)}")
+        return None
