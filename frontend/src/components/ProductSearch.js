@@ -156,7 +156,9 @@ function ProductSearch() {
     <Container className="py-5">
       <header className="d-flex justify-content-between align-items-center mb-3">
         <div className="d-flex align-items-center">
+        <a href="/">
           <img src={require('../assets/images/logo1.png')} alt="Yemberzal6" className="me-3 logo-size" />
+        </a>
           {/* <div className="visit-counter" style={{
             backgroundColor: '#f8f9fa',
             padding: '8px 15px',
@@ -170,7 +172,7 @@ function ProductSearch() {
         </div>
         <div className="d-flex fs-4">
           <Link to="/mission" className="me-3 text-decoration-none">mission</Link>
-          <Link to="/about" className="me-3 text-decoration-none">about</Link>
+          <Link to="/about" className="me-3 text-decoration-none">kashmir</Link>
           <Link to="/contact" className="text-decoration-none">contact</Link>
         </div>
       </header>
