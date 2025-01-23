@@ -88,7 +88,7 @@ function Contact() {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="container py-5">
       {/* Header */}
       <header className="d-flex justify-content-between align-items-center mb-4">
         <div className="d-flex align-items-center">

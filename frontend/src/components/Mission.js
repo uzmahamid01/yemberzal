@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../assets/css/mission.css';
 
 function Mission() {
+
+    const [visitCount, setVisitCount] = useState(0);
+
+    useEffect(() => {
+        const storedVisits = localStorage.getItem('visitCount');
+        const currentVisitCount = storedVisits ? parseInt(storedVisits) : 0;
+    
+        const newVisitCount = currentVisitCount + 1;
+        localStorage.setItem('visitCount', newVisitCount);
+        setVisitCount(newVisitCount);
+      }, []);
+
   return (
-    <div className="container mt-4">
+    <div className="container py-5">
       {/* Header */}
       <header className="d-flex justify-content-between align-items-center mb-4">
         <div className="d-flex align-items-center">
@@ -18,7 +30,8 @@ function Mission() {
 
       {/* Mission Section */}
       <section id="mission" className="py-5 text-center">
-        <h2 className="mb-4" style={{ fontSize: '2.5rem', fontWeight: 'bold' }}>Our Mission</h2>
+        <h2 className="mb-4" style={{ fontSize: '2.5rem', fontWeight: 'bold' }}>Our Mission <span style={{fontSize: '1.5rem', fontWeight: 'lighter'}}>{visitCount.toLocaleString()}</span></h2> 
+            {/* span role="img" aria-label="visitors"></span> {visitCount.toLocaleString()} */}
         <p className="mb-4" style={{ fontSize: '1.2rem', color: '#555', lineHeight: '1.8' }}>
         Yemberzal's mission is to connect people with authentic Kashmiri clothing, crafted by talented Kashmiri designers, artisans, and small businesses. Through a seamless search experience, we aim to celebrate and share the rich culture and craftsmanship of Kashmir with audiences both within the region and around the globe.
         </p>
@@ -68,7 +81,7 @@ function Mission() {
                         "The art of Kashmir is the soul of the valley woven into every thread.."
                     </p>
                     <footer className="blockquote-footer mt-4">
-                        <cite style={{ fontSize: '1.2rem', color: '#555' }}>Yemberzal Team</cite>
+                        <cite style={{ fontSize: '1.2rem', color: '#555' }}>YT</cite>
                     </footer>
                 </blockquote>
             </div>

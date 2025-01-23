@@ -39,7 +39,7 @@ function LandingPageTrending() {
   }, []);
 
   return (
-    <div>
+    <div className='px-4'>
       {loading ? (
         <div className="text-center">Loading trending products...</div>
       ) : error ? (

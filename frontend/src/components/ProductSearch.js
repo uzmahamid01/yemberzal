@@ -20,6 +20,16 @@ function ProductSearch() {
   const [brands, setBrands] = useState([]);
   const [productCount, setProductCount] = useState(0);
   const [selectedBrand, setSelectedBrand] = useState('');
+  // const [visitCount, setVisitCount] = useState(0);
+
+  // useEffect(() => {
+  //   const storedVisits = localStorage.getItem('visitCount');
+  //   const currentVisitCount = storedVisits ? parseInt(storedVisits) : 0;
+
+  //   const newVisitCount = currentVisitCount + 1;
+  //   localStorage.setItem('visitCount', newVisitCount);
+  //   setVisitCount(newVisitCount);
+  // }, []);
 
 
   useEffect(() => {
@@ -143,15 +153,20 @@ function ProductSearch() {
   }, []);
 
   return (
-    <Container className="mt-2">
+    <Container className="py-5">
       <header className="d-flex justify-content-between align-items-center mb-3">
         <div className="d-flex align-items-center">
-          {/* <img src="/logo1.png" alt="Yemberzal1" className="me-3 logo-size" />
-          <img src="../assets/images/logo1.png" alt="Yemberzal2" className="me-3 logo-size" />
-          <img src={`${process.env.PUBLIC_URL}/logo1.png`}alt="Yemberzal3" className="me-3 logo-size" />
-          <img src="https://uzmah.netlify.app/p2_files/50.png" alt="Yemberzal4" className="me-3 logo-size" />
-          <img src={logo1} alt="Yemberzal5" className="me-3 logo-size" /> */}
           <img src={require('../assets/images/logo1.png')} alt="Yemberzal6" className="me-3 logo-size" />
+          {/* <div className="visit-counter" style={{
+            backgroundColor: '#f8f9fa',
+            padding: '8px 15px',
+            borderRadius: '20px',
+            fontSize: '14px',
+            color: '#666',
+            marginLeft: '15px'
+          }}>
+            <span role="img" aria-label="visitors">👥</span> Visitors: {visitCount.toLocaleString()}
+          </div> */}
         </div>
         <div className="d-flex fs-4">
           <Link to="/mission" className="me-3 text-decoration-none">mission</Link>
@@ -321,7 +336,9 @@ function ProductSearch() {
           <LandingPageTrending />
         </>
       )}
+      
     </Container>
+    
   );
 }
 

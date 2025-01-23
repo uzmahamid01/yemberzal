@@ -2,16 +2,16 @@ import React from 'react';
 import '../assets/css/about.css';
 function About() {
   return (
-    <div className="container mt-4">
+    <div className="container py-5">
       {/* Header */}
       <header className="d-flex justify-content-between align-items-center mb-4">
         <div className="d-flex align-items-center">
         <img src={require('../assets/images/logo1.png')} alt="Yemberzal6" className="me-3 logo-size" />
         </div>
         <div className="d-flex fs-4">
-          <a href="/" className="me-3 text-decoration-none">Home</a>
-          <a href="/mission" className="me-3 text-decoration-none">Mission</a>
-          <a href="/contact" className="text-decoration-none">Contact</a>
+          <a href="/" className="me-3 text-decoration-none">home</a>
+          <a href="/mission" className="me-3 text-decoration-none">mission</a>
+          <a href="/contact" className="text-decoration-none">contact</a>
         </div>
       </header>
       

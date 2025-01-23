@@ -2,14 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Button, ButtonGroup, Dropdown, DropdownButton } from 'react-bootstrap';
 
 function CategoryFilter({ onCategorySelect, resetSearch, fetchProductsByBrand, brands = [] }) {
-  const categories = ['All', 'Man', 'Woman', 'Accessories', 'Stole', 'Back to Home'];
+  const categories = ['All', 'Man', 'Woman', 'Shawl', 'Back to Trending'];
   const [selectedBrand, setSelectedBrand] = useState('');
 
   const handleCategoryClick = (category) => {
-    if (category === 'Back to Home') {
-      console.log('Back to Home clicked');
+    if (category === 'Back to Trending') {
       resetSearch();  
-    } else if (category === 'Stole') {
+    } else if (category === 'Shawl') {
       category = ['Pashmina Shawl', 'Pashmina Stole'];
       onCategorySelect(category);
     } else {
@@ -28,17 +27,16 @@ function CategoryFilter({ onCategorySelect, resetSearch, fetchProductsByBrand, b
       fetchProductsByBrand(selectedBrand); 
     }
   }, [selectedBrand]);
-  
 
   return (
-    <div className="text-center mb-4">
-      <ButtonGroup>
+    <div className="text-center mb-4 px-4 sm:px-0">
+      <ButtonGroup className="flex flex-wrap justify-center gap-2"> {/* Decreased gap */}
         {categories.map((category) => (
           <Button 
             key={category} 
             variant="outline-dark" 
             onClick={() => handleCategoryClick(category)} 
-            className="category-btn"
+            className="category-btn px-2 py-1 text-sm sm:text-base"
           >
             {category}
           </Button>
@@ -48,7 +46,7 @@ function CategoryFilter({ onCategorySelect, resetSearch, fetchProductsByBrand, b
           id="dropdown-brand" 
           title="Shop by Brand"
           onSelect={handleBrandSelect}
-          className="category-btn dropdown-btn"
+          className="category-btn px-2 py-1 text-sm sm:text-base dropdown-btn"
           drop="down"
         >
           {brands.length > 0 ? (
