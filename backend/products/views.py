@@ -156,30 +156,3 @@ class SearchProductsView(APIView):
             )
 
 
-class VisitCountView(APIView):
-    def post(self, request):
-        try:
-            # Supabase setup (ensure these are set in your environment)
-            SUPABASE_URL = os.getenv('SUPABASE_URL')
-            SUPABASE_KEY = os.getenv('SUPABASE_KEY')
-            supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
-
-            # Fetch the current visit count
-            visit_count_response = supabase.table('visit_counts').select('count').single().execute()
-
-            if visit_count_response.data:
-                # Increment the count
-                new_count = visit_count_response.data['count'] + 1
-                # Update the visit count in the database
-                supabase.table('visit_counts').update({'count': new_count}).eq('id', 1).execute()
-                return Response({'count': new_count}, status=status.HTTP_200_OK)
-            else:
-                # If no record exists, initialize it
-                supabase.table('visit_counts').insert({'count': 1, 'id': 1}).execute()
-                return Response({'count': 1}, status=status.HTTP_200_OK)
-
-        except Exception as e:
-            logger.error(f"Error updating visit count: {str(e)}")
-            return Response({'error': 'Could not update visit count'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-

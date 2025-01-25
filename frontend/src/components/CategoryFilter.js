@@ -26,11 +26,11 @@ function CategoryFilter({ onCategorySelect, resetSearch, fetchProductsByBrand, b
     if (selectedBrand) {
       fetchProductsByBrand(selectedBrand); 
     }
-  }, [selectedBrand]);
+  }, [selectedBrand, fetchProductsByBrand]);
 
   return (
     <div className="text-center mb-4 px-4 sm:px-0">
-      <ButtonGroup className="flex flex-wrap justify-center gap-2"> {/* Decreased gap */}
+      <ButtonGroup className="flex flex-wrap justify-center gap-2">
         {categories.map((category) => (
           <Button 
             key={category} 

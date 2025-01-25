@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-// import axios from 'axios';
 import { Container, Form, Button, Row, Col, Card } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/css/psearch.css';
 import LandingPageTrending from './LandingPageTrending';
 import CategoryFilter from './CategoryFilter';
 import apiClient from '../config/config';
+import ReactGA from 'react-ga';
+import { debounce } from 'lodash';
 
+ReactGA.initialize('G-SW7M3XVNPW'); 
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 function ProductSearch() {
   const [query, setQuery] = useState('');
@@ -20,17 +23,15 @@ function ProductSearch() {
   const [brands, setBrands] = useState([]);
   const [productCount, setProductCount] = useState(0);
   const [selectedBrand, setSelectedBrand] = useState('');
-  // const [visitCount, setVisitCount] = useState(0);
 
-  // useEffect(() => {
-  //   const storedVisits = localStorage.getItem('visitCount');
-  //   const currentVisitCount = storedVisits ? parseInt(storedVisits) : 0;
-
-  //   const newVisitCount = currentVisitCount + 1;
-  //   localStorage.setItem('visitCount', newVisitCount);
-  //   setVisitCount(newVisitCount);
-  // }, []);
-
+  const debouncedSearch = useCallback(
+    debounce(async (searchQuery) => {
+      if (searchQuery.length > 2) {
+        await handleSearch();
+      }
+    }, 300),
+    []
+  );
 
   useEffect(() => {
     let timer;
@@ -44,7 +45,7 @@ function ProductSearch() {
   }, [loading]);
 
   const handleCategorySelect = async (selection) => {
-    if (selectedCategory === selection) return; 
+    // if (selectedCategory === selection) return; 
   
     setSelectedCategory(selection);
     setLoading(true);
@@ -58,8 +59,7 @@ function ProductSearch() {
         q: query || undefined,
       };
   
-      // const response = await axios.get('http://127.0.0.1:8000/api/products/search/', {
-      const response = await apiClient.get('/products/search/',{
+      const response = await apiClient.get('/products/search/', {
         params: params,
       });
   
@@ -72,7 +72,6 @@ function ProductSearch() {
       setLoading(false);
     }
   };
-  
 
   const fetchProductsByBrand = async (brand) => {
     if (loading || selectedBrand === brand) return; 
@@ -82,8 +81,7 @@ function ProductSearch() {
     setTimeoutReached(false);
   
     try {
-      // const response = await axios.get('http://127.0.0.1:8000/api/products/search/', {
-      const response = await apiClient.get('/products/search/',{
+      const response = await apiClient.get('/products/search/', {
         params: { brand },
       });
   
@@ -97,8 +95,13 @@ function ProductSearch() {
       setLoading(false);
     }
   };
-  
-  
+
+  const filteredProducts = useMemo(() => {
+    return products.filter(product => 
+      product.title?.toLowerCase().includes(query.toLowerCase()) ||
+      product.brand?.toLowerCase().includes(query.toLowerCase())
+    );
+  }, [products, query]);
 
   const handleSearch = async (e) => {
     if (e) e.preventDefault();
@@ -106,18 +109,15 @@ function ProductSearch() {
     setError(null);
     setSearchPerformed(true);
     setTimeoutReached(false);
-
+  
     try {
       const params = {
         q: query || undefined,
         category: selectedCategory === 'All' ? '' : selectedCategory,
       };
-
-      // const response = await axios.get('/api/products/search/', {
-      const response = await apiClient.get('/products/search/',{
-        params: params,
-      });
-
+  
+      const response = await apiClient.get('/products/search/', { params });
+  
       setProducts(response.data);
       setProductCount(response.data.length);
     } catch (err) {
@@ -139,7 +139,6 @@ function ProductSearch() {
   useEffect(() => {
     const fetchBrands = async () => {
       try {
-        // const response = await axios.get('/api/brands/');
         const response = await apiClient.get('/brands/');
         if (response.data) {
           setBrands(response.data);
@@ -159,16 +158,6 @@ function ProductSearch() {
         <a href="/">
           <img src={require('../assets/images/logo1.png')} alt="Yemberzal6" className="me-3 logo-size" />
         </a>
-          {/* <div className="visit-counter" style={{
-            backgroundColor: '#f8f9fa',
-            padding: '8px 15px',
-            borderRadius: '20px',
-            fontSize: '14px',
-            color: '#666',
-            marginLeft: '15px'
-          }}>
-            <span role="img" aria-label="visitors">👥</span> Visitors: {visitCount.toLocaleString()}
-          </div> */}
         </div>
         <div className="d-flex fs-4">
           <Link to="/mission" className="me-3 text-decoration-none">mission</Link>
@@ -204,7 +193,11 @@ function ProductSearch() {
                 type="text"
                 placeholder="Search for Kashmiri clothes (e.g., Pashmina Shawl)"
                 value={query}
-                onChange={(e) => setQuery(e.target.value)}
+                onChange={(e) => {
+                  const newQuery = e.target.value;
+                  setQuery(newQuery);
+                  debouncedSearch(newQuery);
+                }}
                 style={{
                   border: '1px solid #ccc',
                   borderRight: 'none',
@@ -254,7 +247,7 @@ function ProductSearch() {
               </Button>
             </div>
           )}
-          {products.length === 0 && !error && !timeoutReached && (
+          {filteredProducts.length === 0 && !error && !timeoutReached && (
             <div className="text-center">
               <Button onClick={resetSearch} variant="outline-secondary">
                 Back to Trending
@@ -262,10 +255,10 @@ function ProductSearch() {
             </div>
           )}
           <div className="text-center mb-4">
-            <strong>{productCount} products found</strong>
+            <strong>{filteredProducts.length} products found</strong>
           </div>
           <Row>
-            {products.map((product, index) => (
+            {filteredProducts.map((product, index) => (
               <Col md={4} key={index} className="mb-4">
                 <Card style={{ height: '650px', width: '90%', align: 'center', borderRadius: '50px', overflow: 'hidden', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
                   <div style={{ height: '70%', overflow: 'hidden', position: 'relative' }}>
@@ -338,9 +331,7 @@ function ProductSearch() {
           <LandingPageTrending />
         </>
       )}
-      
     </Container>
-    
   );
 }
 

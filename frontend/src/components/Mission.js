@@ -1,51 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import '../assets/css/mission.css'; // Make sure you have a single CSS file for both components
-import { supabase } from '../supabaseClient';
+import '../assets/css/mission.css'; 
+import ReactGA from 'react-ga';
+
+ReactGA.initialize('G-SW7M3XVNPW'); 
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 function CombinedPage() {
-    const [visitCount, setVisitCount] = useState(0);
-
-    useEffect(() => {
-        // Fetch initial visit count from Supabase
-        async function fetchVisitCount() {
-            try {
-                const { data, error } = await supabase
-                    .from('visit_counts')
-                    .select('count')
-                    .single();
     
-                if (error) throw error;
-    
-                setVisitCount(data ? data.count : 0);
-            } catch (error) {
-                console.error('Error fetching visit count:', error);
-            }
-        }
-    
-        // Increment visit count
-        async function incrementVisitCount() {
-            try {
-                const response = await fetch('/api/increment-visit-count/', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                });
-    
-                if (!response.ok) {
-                    throw new Error('Failed to increment visit count');
-                }
-    
-                const data = await response.json();
-                setVisitCount(data.count);
-            } catch (error) {
-                console.error('Error incrementing visit count:', error);
-            }
-        }
-    
-        fetchVisitCount();
-        incrementVisitCount();
-    }, []);
     
 
   return (
@@ -67,24 +27,23 @@ function CombinedPage() {
       {/* Mission Section */}
       <section id="mission" className="py-5 text-center">
         <h2 className="mb-4" style={{ fontSize: '2.5rem', fontWeight: 'bold' }}>
-          Our Mission <span style={{fontSize: '1.5rem', fontWeight: 'lighter'}}>{visitCount.toLocaleString()}</span>
+          Mission 
         </h2>
         <p className="mb-4" style={{ fontSize: '1.2rem', color: '#555', lineHeight: '1.8' }}>
           Yemberzal's mission is to connect people with authentic Kashmiri clothing, crafted by talented Kashmiri designers, artisans, and small businesses. Through a seamless search experience, we aim to celebrate and share the rich culture and craftsmanship of Kashmir with audiences both within the region and around the globe.
         </p>
-        {/* Add any additional content like quotes or highlights here */}
         
       </section>
 
       {/* About Section */}
       <section id="about" className="py-5">
         <header className="text-center mb-5">
-          <h2 className="display-4">The Story Behind Yemberzal</h2>
-          <p className="lead">Where tradition meets innovation in Kashmiri fashion.</p>
+          <h2 className="display-8">The Story Behind Yemberzal</h2>
+          {/* <p className="lead display-12">Where tradition meets innovation in Kashmiri fashion.</p> */}
         </header>
 
         <article>
-          <h3>Bridging Tradition and Modernity</h3>
+          <h4>Bridging Tradition and Modernity</h4>
           <p>
             Yemberzal was born out of a simple idea: to make authentic Kashmiri clothing and accessories accessible to people across the globe. Growing up in Kashmir, I witnessed firsthand the artistry and craftsmanship of local designers and artisans. Their work reflects the rich cultural heritage of the region, yet finding these unique creations online was often a challenge.
           </p>
@@ -92,22 +51,22 @@ function CombinedPage() {
             After living outside of Kashmir, I realized just how difficult it is to connect with authentic Kashmiri fashion. It isn't just about the clothes—it is about preserving the stories and traditions they represent. This inspired me to create Yemberzal, a platform that bridges the gap between Kashmir’s timeless fashion and the world.
           </p>
 
-          <h3>A One-Person Journey</h3>
+          <h4>A One-Person Journey</h4>
           <p>
             Yemberzal is a labor of love, created and managed by one person with a passion for Kashmiri culture and technology. With this platform, I aim to celebrate the work of Kashmiri artisans while making their creations easily accessible. My goal is to ensure that the beauty and craftsmanship of Kashmiri clothing resonate with people everywhere.
           </p>
 
-          <h3>Preserving Kashmiri Heritage</h3>
+          <h4>Preserving Kashmiri Heritage</h4>
           <p>
-            At Yemberzal, we are committed to showcasing the intricate artistry of Kashmiri clothing while embracing modern design. From the elegant Pashmina shawls to the traditional embroidered 'Pheran,' every piece reflects centuries of cultural heritage. By connecting artisans directly with a global audience, Yemberzal helps preserve these traditions for future generations.
+            At Yemberzal, I am committed to showcasing the intricate artistry of Kashmiri clothing while embracing modern design. From the elegant Pashmina shawls to the traditional embroidered 'Pheran,' every piece reflects centuries of cultural heritage. By connecting artisans directly with a global audience, Yemberzal helps preserve these traditions for future generations.
           </p>
 
-          <h3>Promoting Sustainability and Ethical Fashion</h3>
+          {/* <h3>Promoting Sustainability and Ethical Fashion</h3>
           <p>
-            Sustainability is at the heart of Yemberzal. By promoting slow fashion and eco-friendly practices, we aim to reduce the environmental impact of modern fashion. Each item featured on Yemberzal is crafted with care, ensuring that it stands as a timeless piece of art while supporting the livelihoods of Kashmiri artisans.
-          </p>
+            Sustainability is at the heart of Yemberzal. By promoting slow fashion and eco-friendly practices, Yemberzal aims to reduce the environmental impact of modern fashion. Each item featured on Yemberzal is crafted with care, ensuring that it stands as a timeless piece of art while supporting the livelihoods of Kashmiri artisans.
+          </p> */}
 
-          <h3>Our Vision</h3>
+          <h4>Vision</h4>
           <p>
             Yemberzal is more than just a platform; it’s a celebration of culture, tradition, and craftsmanship. My hope is that through this initiative, I can contribute to keeping Kashmiri heritage alive while inspiring a deeper appreciation for the artistry behind every garment. Whether you're from Kashmir or halfway across the world, Yemberzal invites you to discover and cherish the magic of Kashmiri fashion.
           </p>
@@ -115,7 +74,7 @@ function CombinedPage() {
         <div className="quote-container mt-5 py-5">
             <div className="quote-text">
                 <blockquote className="blockquote">
-                    <p style={{ fontSize: '2rem', fontStyle: 'italic', color: '#333', lineHeight: '1.5' }}>
+                    <p style={{ fontSize: '1.5rem', fontStyle: 'italic', color: '#333', lineHeight: '1.5' }}>
                         "The art of Kashmir is the soul of the valley woven into every thread.."
                     </p>
                     <footer className="blockquote-footer mt-4">
