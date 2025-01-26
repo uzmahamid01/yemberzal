@@ -23,6 +23,8 @@ function ProductSearch() {
   const [brands, setBrands] = useState([]);
   const [productCount, setProductCount] = useState(0);
   const [selectedBrand, setSelectedBrand] = useState('');
+  // const [currency, setCurrency] = useState('USD'); 
+
 
   const debouncedSearch = useCallback(
     debounce(async (searchQuery) => {
@@ -163,6 +165,18 @@ function ProductSearch() {
           <Link to="/mission" className="me-3 text-decoration-none">mission</Link>
           <Link to="/about" className="me-3 text-decoration-none">kashmir</Link>
           <Link to="/contact" className="text-decoration-none">contact</Link>
+          {/* <Form.Select 
+            value={currency} 
+            onChange={(e) => setCurrency(e.target.value)}
+            style={{
+              width: '100px',
+              fontSize: '14px',
+              marginLeft: '10px'
+            }}
+          >
+            <option value="USD">$ USD</option>
+            <option value="INR">₹ INR</option>
+          </Form.Select> */}
         </div>
       </header>
 

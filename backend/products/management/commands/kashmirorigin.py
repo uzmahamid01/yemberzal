@@ -46,46 +46,32 @@ def extract_brand_name(url):
     brand = url.split('.')[1]
     return brand.replace('-', ' ').title()
 
-def extract_image_url(url_or_html):
-    """
-    Extract image URL from either a URL or an HTML snippet.
-    
-    Args:
-        url_or_html (str): Either a full URL or an HTML snippet
-    
-    Returns:
-        str: First found image URL or None
-    """
-    # Check if input looks like a full URL
+def extract_image_url(url_or_html, session=None):
+    """Extract specific product image URL."""
+    # If a full URL is passed, fetch the content
     if url_or_html.startswith('http'):
         try:
-            # Fetch the webpage content
-            response = requests.get(url_or_html, headers={
-                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36'
-            })
+            if session is None:
+                import requests
+                session = requests.Session()
+            
+            response = session.get(url_or_html)
             html_content = response.text
         except Exception as e:
-            print(f"Error fetching URL: {e}")
+            print(f"Error fetching URL {url_or_html}: {e}")
             return None
-    else:
-        # Assume it's an HTML snippet
-        html_content = url_or_html
 
-    # Parse the HTML
-    soup = BeautifulSoup(html_content, 'html.parser')
+    soup = BeautifulSoup(html_content, 'lxml')
     
-    # First, check for img tag within noscript
-    noscript_img = soup.select_one('noscript img')
-    if noscript_img and 'src' in noscript_img.attrs:
-        src_url = noscript_img['src']
-        return 'https:' + src_url if src_url.startswith('//') else src_url
+    # Prioritize product images over logos
+    product_img = soup.select_one('.product__media img[src*="/cdn/shop/files/"]')
     
-    # If no noscript img, fall back to regular img tag
-    img_tag = soup.find('img')
-    if img_tag and 'src' in img_tag.attrs:
-        src_url = img_tag['src']
-        return 'https:' + src_url if src_url.startswith('//') else src_url
-    
+    if product_img and 'src' in product_img.attrs:
+        img_url = product_img['src']
+        # Remove width parameter to get base image URL
+        base_url = "https:" + img_url.split('&width=')[0]
+        return base_url
+
     return None
 
 def scrape_product(session, link):
@@ -94,22 +80,19 @@ def scrape_product(session, link):
         r = session.get(link)
         soup = BeautifulSoup(r.content, 'lxml')
         
-        productname = soup.find('h1', class_='product__heading h2')
+        productname = soup.find('h1', class_='product__title')
         
         if not productname:
             productname = soup.find('title')  
         
         productname = productname.text.strip() if productname else 'No title available'
         
-        price = soup.find('span', class_='price-item price-item--sale')
+        price = soup.find('span', class_='price-item price-item--sale price-item--last')
         price = price.text.strip() if price else 'N/A'
 
 
-        # img_tags = soup.find_all('img', class_='product__media')
+        price = clean_price(price)
         img_url = extract_image_url(link)
-        #need to add category and description ------- later part
-        # category = soup.find('span', class_='product__category')
-
        
         return {
             'brand': extract_brand_name(link),
@@ -124,11 +107,26 @@ def scrape_product(session, link):
         return None
 
 
-def clean_price(price_str):
+def clean_price(price_str): 
+    """Clean and convert the price from Rs to USD."""
+    if price_str.startswith('Rs. '):
+        price_str = price_str.replace('Rs. ', '').replace('Rs. ', '').strip()
+        price_str = price_str.replace(',', '')  # Remove commas for numeric conversion
+        
+        try:
+            usd_price = Decimal(price_str) / Decimal(86)  # INR to USD conversion
+            # Format the result to 2 decimal places
+            return f"${usd_price:.2f}"
+        except Exception as e:
+            print(f"Error converting price: {price_str} - {e}")
+            return '$0.00'
+    
     match = re.search(r'\d+\.\d+', price_str)
     if match:
-        return match.group(0) 
-    return '0.00' 
+        return f"${match.group(0)}" 
+    
+    return '$0.00'
+
 
 def save_to_supabase(products):
     """Save products to Supabase."""
@@ -137,7 +135,7 @@ def save_to_supabase(products):
         try:
             supabase.table('products').insert({
                 'title': product['title'],
-                'price': clean_price(product['price']).replace('$', '').replace(',', '').strip(),
+                'price': float(product['price']) if isinstance(product['price'], Decimal) else product['price'],
                 'description': product['description'],
                 'image': product['image'],
                 'brand': product['brand'],
@@ -176,11 +174,13 @@ def get_product_links(session, base_url, collection_name):
             
     return product_links
 
+
+
 def main():
-    base_url = 'https://global.kashmirbox.com/'
+    base_url = 'https://www.kashmirorigin.com/'
     session = create_session()
 
-    collection_names = ["nayaab", "meher", "rang-e-khizan", "pashm", "diwaan-e-khas", "nigeen", "posh"]
+    collection_names = ["kashmiri-pheran-online", "ponchos", "winter-suits", "silk-jacket", "woolen-wraps", "cord-set", "tips-&-kurtis", "suits", "sarees", "kaftan"]
     all_product_links = set()
 
     for collection in collection_names:
@@ -210,3 +210,5 @@ if __name__ == "__main__":
     start_time = time.time()
     main()
     print(f"Execution time: {time.time() - start_time:.2f} seconds")
+
+
