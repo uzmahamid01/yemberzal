@@ -9,22 +9,28 @@ function About() {
       website: "https://www.tulpalav.com/",
       // bgColor: "bg-light"
     },
+    {
+      logo: 'https://global.kashmirbox.com/cdn/shop/files/2.png?height=140&v=1701627437',
+      description: "Authentic Pashmina shawls and accessories",
+      website: "https://www.kashmirshop.com/",
+      bgColor: "bg-white"
+    },
     // {
-    //   logo: 'https://global.kashmirbox.com/cdn/shop/files/2.png?height=140&v=1701627437',
-    //   description: "Authentic Pashmina shawls and accessories",
-    //   website: "https://www.kashmirshop.com/",
-    //   bgColor: "bg-white"
+    //   logo: 'https://cdn.baraqah.in/wp-content/uploads/2024/03/baraqah-logo-white.png',
+    //   description: "Handcrafted traditional Kashmiri clothing and textiles",
+    //   website: "https://baraqah.in/",
+    //   bgColor: "bg-dark"
+    // },
+    // {
+    //   logo: 'https://www.pashmina.com/_next/image/?url=%2Fimages%2Flogo.png&w=640&q=75',
+    //   description: "Intricate embroidery and traditional Kashmiri garments",
+    //   website: "https://www.pashmina.com/",
+    //   bgColor: "bg-black"
     // },
     {
-      logo: 'https://cdn.baraqah.in/wp-content/uploads/2024/03/baraqah-logo-white.png',
+      logo: 'https://www.kashmirorigin.com/cdn/shop/files/logo_400x200_927d4bb5-2ce9-4f8b-b0f8-46ab9b93ab59.png?v=1731750136&width=280',
       description: "Handcrafted traditional Kashmiri clothing and textiles",
-      website: "https://baraqah.in/",
-      bgColor: "bg-dark"
-    },
-    {
-      logo: 'https://www.pashmina.com/_next/image/?url=%2Fimages%2Flogo.png&w=640&q=75',
-      description: "Intricate embroidery and traditional Kashmiri garments",
-      website: "https://www.pashmina.com/",
+      website: "https://kashmirorigin.com/",
       bgColor: "bg-black"
     },
     {
