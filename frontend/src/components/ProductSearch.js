@@ -187,12 +187,15 @@ function ProductSearch() {
         style={{
           margin: 0,
           padding: 0,
-          width: '600px',
-          height: '300px',
+          width: '100%', 
+          maxWidth: '600px', 
+          height: 'auto', 
+          maxHeight: '300px', 
           objectFit: 'cover',
           objectPosition: 'center',
         }}
       />
+
 
       <Form onSubmit={handleSearch} className="mb-4 d-flex justify-content-center">
         <Row className="justify-content-center w-100">
