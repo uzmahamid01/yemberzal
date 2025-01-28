@@ -1,3 +1,4 @@
+
 import '../assets/css/mission.css'; 
 import ReactGA from 'react-ga';
 
@@ -27,10 +28,11 @@ function CombinedPage() {
       {/* Mission Section */}
       <section id="mission" className="py-5 text-center">
         <h2 className="mb-4" style={{ fontSize: '2.5rem', fontWeight: 'bold' }}>
-          Mission 
+          Mission: a Homecoming 
         </h2>
         <p className="mb-4" style={{ fontSize: '1.2rem', color: '#555', lineHeight: '1.8' }}>
           Yemberzal's mission is to connect people with authentic Kashmiri clothing, crafted by talented Kashmiri designers, artisans, and small businesses. Through a seamless search experience, we aim to celebrate and share the rich culture and craftsmanship of Kashmir with audiences both within the region and around the globe.
+          Bridging <em>Kasheer</em> with <em>Duniya</em>
         </p>
         
       </section>
@@ -39,7 +41,7 @@ function CombinedPage() {
       <section id="about" className="py-5">
         <header className="text-center mb-5">
           <h2 className="display-8">The Story Behind Yemberzal</h2>
-          {/* <p className="lead display-12">Where tradition meets innovation in Kashmiri fashion.</p> */}
+          {/* <p className="lead display-12">Where <em>Bombur</em> (Kashmiri Bumblebee) meets Technology</p> */}
         </header>
 
         <article>
@@ -58,27 +60,24 @@ function CombinedPage() {
 
           <h4>Preserving Kashmiri Heritage</h4>
           <p>
-            At Yemberzal, I am committed to showcasing the intricate artistry of Kashmiri clothing while embracing modern design. From the elegant Pashmina shawls to the traditional embroidered 'Pheran,' every piece reflects centuries of cultural heritage. By connecting artisans directly with a global audience, Yemberzal helps preserve these traditions for future generations.
+            At Yemberzal, I am committed to showcasing the intricate artistry of Kashmiri clothing while embracing modern design. From the elegant Pashmina shawls to the traditional embroidered 'Pheran,' every piece reflects centuries of cultural heritage. By connecting artisans directly with a global audience, Yemberzal hopes to preserve these traditions for future generations.
           </p>
-
-          {/* <h3>Promoting Sustainability and Ethical Fashion</h3>
-          <p>
-            Sustainability is at the heart of Yemberzal. By promoting slow fashion and eco-friendly practices, Yemberzal aims to reduce the environmental impact of modern fashion. Each item featured on Yemberzal is crafted with care, ensuring that it stands as a timeless piece of art while supporting the livelihoods of Kashmiri artisans.
-          </p> */}
 
           <h4>Vision</h4>
           <p>
             Yemberzal is more than just a platform; it’s a celebration of culture, tradition, and craftsmanship. My hope is that through this initiative, I can contribute to keeping Kashmiri heritage alive while inspiring a deeper appreciation for the artistry behind every garment. Whether you're from Kashmir or halfway across the world, Yemberzal invites you to discover and cherish the magic of Kashmiri fashion.
           </p>
+
         </article>
         <div className="quote-container mt-5 py-5">
             <div className="quote-text">
                 <blockquote className="blockquote">
-                    <p style={{ fontSize: '1.5rem', fontStyle: 'italic', color: '#333', lineHeight: '1.5' }}>
-                        "The art of Kashmir is the soul of the valley woven into every thread.."
-                    </p>
+                    {/* <p style={{ fontSize: '1.5rem', fontStyle: 'italic', color: '#333', lineHeight: '1.5' }}>
+                        "The art of Kashmir is the soul of the valley woven into every thread.." <br />
+                        Yemberzal - My Love Letter to Kashmir 💌
+                    </p> */}
                     <footer className="blockquote-footer mt-4">
-                        <cite style={{ fontSize: '1.2rem', color: '#555' }}>YT</cite>
+                        <cite style={{ fontSize: '1.2rem', color: '#555' }}>Yemberzal - My Love Letter to Kashmir 💌</cite>
                     </footer>
                 </blockquote>
             </div>

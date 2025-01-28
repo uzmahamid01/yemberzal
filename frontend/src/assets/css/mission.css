@@ -104,4 +104,51 @@
       font-size: 1.2rem;
     }
   }
-  
+/* Kashmiri Styling Elements */
+.chinar-heading {
+  font-family: 'Philosopher', sans-serif;
+  border-bottom: 2px solid #8B0000;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+.kashmiri-text {
+  font-size: 1.2rem;
+  color: #444;
+  line-height: 1.8;
+  text-align: justify;
+}
+
+.saffron-text {
+  color: #FF9933;
+  font-family: 'Raleway', sans-serif;
+}
+
+.koshur-verse {
+  background: #f8f4e6;
+  border-left: 4px solid #8B0000;
+  font-style: italic;
+}
+
+.kashmir-border {
+  border: 2px solid #8B0000;
+  border-image: linear-gradient(45deg, #8B0000, #FFD700) 1;
+}
+
+.kashmiri-proverb {
+  font-size: 1.5rem;
+  color: #2F4F4F;
+  font-family: 'Playfair Display', serif;
+}
+
+.kashmiri-list li {
+  list-style-type: none;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.kashmiri-list li:before {
+  content: "🌼";
+  position: absolute;
+  left: 0;
+}
