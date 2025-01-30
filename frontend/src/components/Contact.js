@@ -8,13 +8,14 @@ function Contact() {
     email: '',
     bugReport: '',
     productRequest: '',
-    generalQuery: ''
+    generalQuery: '',
+    anonymousQuery: ''
   });
   
   const [activeForm, setActiveForm] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   
-  const API_URL = process.env.REACT_APP_API_URL || 'https://api.apispreadsheets.com/data/gVwbWXMflPWXkYGn/';
+  const API_URL = process.env.REACT_APP_API_URL || 'https://api.apispreadsheets.com/data/f3wYvYFoCfw2XxoV/';
   console.log('API URL:', API_URL);  
   console.log('Process Env:', process.env);
 
@@ -33,7 +34,8 @@ function Contact() {
         Email: formData.email,
         "Report Bug": formType === 'Bug Report' ? formData.bugReport : "",
         "Collab": formType === 'Product Addition' ? formData.productRequest : "",
-        "General question": formType === 'General Query' ? formData.generalQuery : ""
+        "General question": formType === 'General Query' ? formData.generalQuery : "",
+        "Anonymous Question": formType === 'Anonymous Query' ? formData.anonymousQuery : ""
       };
 
       const response = await fetch(API_URL, {
@@ -70,7 +72,8 @@ function Contact() {
           email: '',
           bugReport: '',
           productRequest: '',
-          generalQuery: ''
+          generalQuery: '',
+          anonymousQuery: ''
         });
         setActiveForm(null);
       } else {
@@ -284,6 +287,33 @@ function Contact() {
                 </form>
               </div>
             )}
+
+
+            {/* Anonymous Form */}
+            <form onSubmit={(e) => handleSubmit(e, 'Anonymous Query')}>
+              <div className="mb-3">
+                <label htmlFor="anonymousQuery" className="form-label">Anonymous Question</label>
+                <textarea
+                  name="anonymousQuery"
+                  value={formData.anonymousQuery}
+                  placeholder='Your message here...'
+                  onChange={handleChange}
+                  className="form-control"
+                  rows="4"
+                  required
+                />
+              </div>
+              <button 
+                type="submit" 
+                className="btn btn-primary w-100"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? 'Submitting...' : 'Submit Message'}
+              </button>
+            </form>
+
+
+
           </div>
         </div>
       </section>
