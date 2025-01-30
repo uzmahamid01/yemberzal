@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import '../assets/css/contact.css';
 
-
 function Contact() {
   const [formData, setFormData] = useState({
     name: '',
@@ -14,10 +13,11 @@ function Contact() {
   
   const [activeForm, setActiveForm] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [modalMessage, setModalMessage] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+
   
   const API_URL = process.env.REACT_APP_API_URL || 'https://api.apispreadsheets.com/data/f3wYvYFoCfw2XxoV/';
-  console.log('API URL:', API_URL);  
-  console.log('Process Env:', process.env);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -48,11 +48,7 @@ function Contact() {
         }),
       });
 
-      if (response.status === 201) {
-        return true;
-      } else {
-        throw new Error('Failed to submit form');
-      }
+      return response.status === 201;
     } catch (error) {
       console.error('Error submitting form:', error);
       return false;
@@ -62,11 +58,12 @@ function Contact() {
   const handleSubmit = async (e, formType) => {
     e.preventDefault();
     setIsSubmitting(true);
-
+  
     try {
       const success = await submitToSpreadsheet(formType);
       if (success) {
-        alert(`${formType} submitted successfully!`);
+        setModalMessage(`${formType} submitted successfully!`);
+        setShowModal(true);
         setFormData({
           name: '',
           email: '',
@@ -76,15 +73,23 @@ function Contact() {
           anonymousQuery: ''
         });
         setActiveForm(null);
+        
+        // Auto-hide the modal after 3 seconds
+        setTimeout(() => {
+          setShowModal(false);
+        }, 3000);
       } else {
-        alert('Failed to submit form. Please try again.');
+        setModalMessage('Failed to submit form. Please try again.');
+        setShowModal(true);
       }
     } catch (error) {
-      alert('An error occurred. Please try again.');
+      setModalMessage('An error occurred. Please try again.');
+      setShowModal(true);
     } finally {
       setIsSubmitting(false);
     }
   };
+  
 
   const toggleForm = (formName) => {
     setActiveForm(activeForm === formName ? null : formName);
@@ -93,6 +98,15 @@ function Contact() {
   return (
     <div className="container py-5">
       {/* Header */}
+      {showModal && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <p>{modalMessage}</p>
+            <button onClick={() => setShowModal(false)}>OK</button>
+          </div>
+        </div>
+      )}
+
       <header className="d-flex justify-content-between align-items-center mb-4">
         <div className="d-flex align-items-center">
         <a href="/">
