@@ -124,9 +124,9 @@ function Contact() {
       <section id="contact" className="py-5">
         <h2 className="text-center mb-4">contact us</h2>
         <p className="text-center">
-          Have questions or want to collaborate? Reach out to us at:
+          Have questions or want to collaborate? Reach out:
           <br />
-          <a href="mailto:contact@yemberzal.com">yemberzal@morel.com</a>
+          {/* <a href="mailto:contact@yemberzal.com">yemberzal@morel.com</a> */}
         </p>
 
         {/* Contact Forms */}
