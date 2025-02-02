@@ -4,10 +4,17 @@ import { Row, Col, Card, Button } from 'react-bootstrap';
 import '../assets/css/psearch.css';
 import apiClient from '../config/config';
 
-function LandingPageTrending() {
+function LandingPageTrending({query, currency }) {
   const [trendingProducts, setTrendingProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const currencySymbols = {
+    USD: '$',
+    INR: '₹',
+    EUR: '€',
+  };
+  
 
   useEffect(() => {
     const fetchTrendingProducts = async () => {
@@ -18,6 +25,7 @@ function LandingPageTrending() {
         // Make sure to use http:// not https:// and include the full URL
         // const response = await axios.get('http://127.0.0.1:8000/api/products/trending/', {
           const response = await apiClient.get('/products/trending/', {
+          params:{currency},
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -36,7 +44,7 @@ function LandingPageTrending() {
     };
 
     fetchTrendingProducts();
-  }, []);
+  }, [currency]);
 
   return (
     <div className='px-4'>
@@ -99,8 +107,9 @@ function LandingPageTrending() {
 
                     {/* Price */}
                     <Card.Text style={{ fontSize: '16px', color: '#555' }}>
-                      ${product.price || 'Not Available'}
+                    {currencySymbols[currency] || '$'} {product.price || 'Not Available'}
                     </Card.Text>
+
 
                     {/* View Product Button */}
                     <Button

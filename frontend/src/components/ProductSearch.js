@@ -12,7 +12,7 @@ import { debounce } from 'lodash';
 ReactGA.initialize('G-SW7M3XVNPW'); 
 ReactGA.pageview(window.location.pathname + window.location.search);
 
-function ProductSearch() {
+function HomePages() {
   const [query, setQuery] = useState('');
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -23,8 +23,14 @@ function ProductSearch() {
   const [brands, setBrands] = useState([]);
   const [productCount, setProductCount] = useState(0);
   const [selectedBrand, setSelectedBrand] = useState('');
-  // const [currency, setCurrency] = useState('USD'); 
+  const [currency, setCurrency] = useState('USD'); 
 
+  const currencySymbols = {
+    USD: '$',
+    INR: '₹',
+    EUR: '€',
+  };
+  
 
   const debouncedSearch = useCallback(
     debounce(async (searchQuery) => {
@@ -47,7 +53,6 @@ function ProductSearch() {
   }, [loading]);
 
   const handleCategorySelect = async (selection) => {
-    // if (selectedCategory === selection) return; 
   
     setSelectedCategory(selection);
     setLoading(true);
@@ -59,6 +64,7 @@ function ProductSearch() {
       const params = {
         category: selection === 'All' ? '' : selection,
         q: query || undefined,
+        currency: currency,
       };
   
       const response = await apiClient.get('/products/search/', {
@@ -85,6 +91,7 @@ function ProductSearch() {
     try {
       const response = await apiClient.get('/products/search/', {
         params: { brand },
+        currency: currency,
       });
   
       setProducts(response.data);
@@ -116,6 +123,8 @@ function ProductSearch() {
       const params = {
         q: query || undefined,
         category: selectedCategory === 'All' ? '' : selectedCategory,
+        brand: selectedBrand || undefined,
+        currency: currency,
       };
   
       const response = await apiClient.get('/products/search/', { params });
@@ -153,6 +162,13 @@ function ProductSearch() {
     fetchBrands();
   }, []);
 
+  useEffect(() => {
+    if (searchPerformed) {
+      handleSearch();
+    }
+  }, [currency]); 
+  
+
   return (
     <Container className="py-5">
       <header className="d-flex justify-content-between align-items-center mb-3">
@@ -165,7 +181,7 @@ function ProductSearch() {
           <Link to="/mission" className="me-3 text-decoration-none">mission</Link>
           <Link to="/about" className="me-3 text-decoration-none">kashmir</Link>
           <Link to="/contact" className="text-decoration-none">contact</Link>
-          {/* <Form.Select 
+          <Form.Select 
             value={currency} 
             onChange={(e) => setCurrency(e.target.value)}
             style={{
@@ -176,7 +192,8 @@ function ProductSearch() {
           >
             <option value="USD">$ USD</option>
             <option value="INR">₹ INR</option>
-          </Form.Select> */}
+            <option value="EUR">€ EUR</option>
+          </Form.Select>
         </div>
       </header>
 
@@ -302,8 +319,10 @@ function ProductSearch() {
                       {product.title || 'Unnamed Product'}
                     </Card.Title>
                     <Card.Text style={{ fontSize: '16px', color: '#555' }}>
-                      ${product.price || 'Not Available'}
+                    {currencySymbols[currency] || '$'} {product.price || 'Not Available'}
                     </Card.Text>
+
+
                     
                     <Button
                       variant="outline-primary"
@@ -345,11 +364,11 @@ function ProductSearch() {
       {!searchPerformed && (
         <>
           <h2 className="text-center mb-4">Trending Kashmiri Outfits</h2>
-          <LandingPageTrending />
+          <LandingPageTrending  query={query} currency={currency}/>
         </>
       )}
     </Container>
   );
 }
 
-export default ProductSearch;
+export default HomePages;

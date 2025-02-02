@@ -41,10 +41,16 @@ class TrendingProductsView(APIView):
         """
         Retrieve trending products from Supabase
         """
+        currency = request.GET.get('currency', 'USD')
+        exchange_rates = {"INR": 86.1, "EUR": 0.96, "USD": 1}
+
         try:
             response = supabase.table('products').select('*').limit(21).execute()
 
             if response.data:
+                for product in response.data:
+                    rate = exchange_rates.get(currency, 1)
+                    product["price"] = round(product["price"] * rate, 2)
                 return Response(response.data, status=status.HTTP_200_OK)
             else:
                 return Response(
@@ -97,6 +103,7 @@ class SearchProductsView(APIView):
         query = request.GET.get('q', '')
         category = request.GET.get('category', '')
         brand = request.GET.get('brand', '')
+        currency = request.GET.get('currency', 'USD')
         
         logger.info(f"Received search request - query: {query}, category: {category}")
         
@@ -129,6 +136,12 @@ class SearchProductsView(APIView):
             
             if response.data:
                 logger.info(f"Query returned {len(response.data)} results")
+
+                exchange_rates = {"INR": 86.1, "EUR": 0.96, "USD": 1}
+
+                for product in response.data:
+                    product["price"] = round(product["price"] * exchange_rates.get(currency, 1), 2)
+                
                 
                 if category and category != 'All':
                     filtered_data = []
