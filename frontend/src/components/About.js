@@ -51,34 +51,34 @@ function About() {
   const instagramDesigners = [
     {
       handle: '@sarahsehar7',
-      profilePic: 'ss.png',
+      profilePic: '/ss.png',
       profileUrl: 'https://www.instagram.com/sarahsehar7',
       posts: [
-        'ss1.png',
-        'ss2.png',
-        'ss3.png',
+        '/ss1.png',
+        '/ss2.png',
+        '/ss3.png',
       ],
       bio: 'Threads of tradition, designs of today'
     },
     {
       handle: '@labelbymansha',
-      profilePic: 'mn.png',
+      profilePic: '/mn.png',
       profileUrl: 'https://www.instagram.com/labelbymansha',
       posts: [
-        'mn1.png',
-        'mn2.png',
-        'mn3.png',
+        '/mn1.png',
+        '/mn2.png',
+        '/mn3.png',
       ],
       bio: 'A store of designer collection'
     },
     {
       handle: '@olivecouture_',
-      profilePic: 'olive1.png',
+      profilePic: '/olive1.png',
       profileUrl: 'https://www.instagram.com/olivecouture_',
       posts: [
-        'pink1.png',
-        'pink2.png',
-        'pink3.png',
+        '/pink1.png',
+        '/pink2.png',
+        '/pink3.png',
       ],
       bio: 'High End Designers Consignment.'
     },
