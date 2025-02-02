@@ -9,7 +9,7 @@ function CategoryFilter({ onCategorySelect, resetSearch, fetchProductsByBrand, b
     if (category === 'Back to Trending') {
       resetSearch();  
     } else if (category === 'Shawl') {
-      category = ['Pashmina Shawl', 'Pashmina Stole'];
+      category = ('Pashmina Shawl', 'Pashmina Stole');
       onCategorySelect(category);
     } else {
       onCategorySelect(category);

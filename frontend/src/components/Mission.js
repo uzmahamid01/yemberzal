@@ -25,7 +25,7 @@ function CombinedPage() {
         <div className="quote-text">
           <blockquote className="blockquote">
           <h4 className="section-title">
-              <span style={{fontSize: '1rem'}}>یمبرزل کیہ چھُ؟</span>  Why YEMBERZAL?
+              <span style={{fontSize: '1rem'}}>یمبرزل کیہ چھُ؟</span>  WHY YEMBERZAL?
             </h4>            <p className="section-paragraph">
             Yemberzal (Kashmiri for crocus flower) symbolizes resilience and hope, mirroring Kashmir’s artisans thriving amid adversity. The name reflects the platform’s mission: bridging their timeless craftsmanship with modern technology, like the crocus bridging winter’s harshness with fleeting beauty.
             </p>
@@ -34,11 +34,11 @@ function CombinedPage() {
             
             <p className="section-paragraph">
               Yemberzal's mission is to connect people with authentic Kashmiri clothing, crafted by talented Kashmiri designers, artisans, and small businesses. Through a seamless search experience, we aim to celebrate and share the rich culture and craftsmanship of Kashmir with audiences both within the region and around the globe.
-              Bridging <em>Kasheer</em> with <em>Duniya</em>
-              The best part? All the brands you love, all in one place.
+              Bridging <em>Kasheer</em> with <em>Duniya</em> 🌍
+               The best part? All the brands you love, all in one place.
             </p>
             <hr />
-            <h4 className="section-title">Story Behind YEMBERZAL</h4>
+            <h4 className="section-title">STORY BEHIND YEMBERZAL</h4>
             <p className="section-paragraph">
               Yemberzal was born out of a simple idea: to make authentic Kashmiri clothing and accessories accessible to people across the globe. <br/>
               Yemberzal is a labor of love, created and managed by one person with a passion for Kashmiri culture and technology. With this platform, I aim to celebrate the work of Kashmiri artisans while making their creations easily accessible. My goal is to ensure that the beauty and craftsmanship of Kashmiri clothing resonate with people everywhere.

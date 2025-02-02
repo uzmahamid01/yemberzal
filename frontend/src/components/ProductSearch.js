@@ -187,7 +187,7 @@ function HomePages() {
             style={{
               width: '100px',
               fontSize: '14px',
-              marginLeft: '10px'
+              marginLeft: '10px',
             }}
           >
             <option value="USD">$ USD</option>
