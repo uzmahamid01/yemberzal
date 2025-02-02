@@ -207,7 +207,7 @@ function Contact() {
             {/* Product Request Form */}
             {activeForm === 'productRequest' && (
               <div className="col-12">
-                <h3 className="form-heading">Add Your Products</h3>
+                <h3 className="form-heading">Request to Add Your Products</h3>
                 <form onSubmit={(e) => handleSubmit(e, 'Product Addition')}>
                   <div className="mb-3">
                     <label htmlFor="name" className="form-label">Your Name</label>
@@ -232,10 +232,11 @@ function Contact() {
                     />
                   </div>
                   <div className="mb-3">
-                    <label htmlFor="productRequest" className="form-label">Product Details</label>
+                    <label htmlFor="productRequest" className="form-label">Product Details </label>
                     <textarea
                       name="productRequest"
                       value={formData.productRequest}
+                      placeholder='Include your Brands wesite link......'
                       onChange={handleChange}
                       className="form-control"
                       rows="4"

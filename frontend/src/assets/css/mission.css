@@ -1,154 +1,128 @@
-.highlight-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 40px;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .highlight-container img {
-    width: 250px; 
-    height: 250px; 
-    margin-right: 20px;
-    border-radius: 10px;
-  }
-  
-  .highlight-container.row-reverse {
-    flex-direction: row-reverse;
-  }
-  
-  .highlight-text {
-    flex: 1;
-    text-align: left;
-  }
-  
-  .highlight-text h4 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .highlight-text p {
-    font-size: 1rem;
-    color: #666;
-  }
-  
-  .highlight-img {
-    width: 80%; 
-    max-width: 600px; 
-    margin-left: 30px;
-    height: auto;
-  }
-  
-  /* Quote Section */
-  .quote-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* background-color: #f1f1f1; */
-    padding: 40px;
-    max-width: 1200px;
-    margin: 0 auto;
-    clip-path: ellipse(70% 85% at 50% 50%);
-    /* border-radius: 25% / 35%; */
-    /* box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); */
-  }
-  
-  
-  
-  .quote-text {
-    flex: 1;
-    text-align: left;
-  }
-  
-  .quote-text p {
-    font-size: 1.5rem;
-    font-style: italic;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  .quote-img {
-    max-width: 25%; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-left: 30px;
-    height: auto;
-  }
-  
-  @media (max-width: 768px) {
-    .highlight-container {
-      flex-direction: column;
-      text-align: center;
-    }
-  
-    .highlight-container img {
-      width: 180px; 
-      height: 180px;
-    }
-  
-    .quote-container {
-      flex-direction: column;
-      padding: 20px;
-    }
-  
-    .quote-img {
-      max-width: 100%;
-      margin-left: 0;
-      margin-top: 20px;
-      width: 100%; 
-    }
-  
-    .quote-text p {
-      font-size: 1.2rem;
-    }
-  }
-/* Kashmiri Styling Elements */
-.chinar-heading {
-  font-family: 'Philosopher', sans-serif;
-  border-bottom: 2px solid #8B0000;
-  display: inline-block;
-  padding-bottom: 0.5rem;
+/* General Text Styling */
+.section-title {
+  font-size: 1.0rem;
+  font-weight: 600;
+  color: #333;
+  margin-top: 1.5rem;
+  /* text-transform: uppercase; */
 }
 
-.kashmiri-text {
-  font-size: 1.2rem;
-  color: #444;
+.section-paragraph {
+  font-size: 1rem;
+  color: #333;
   line-height: 1.8;
+  margin-bottom: 1.5rem;
   text-align: justify;
 }
 
+.italic-text {
+  font-style: italic;
+  color: #555;
+}
+
+
+/* Quote Section */
+.quote-container {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  
+}
+.blockquote{
+  margin-right: 0px;
+
+}
+.quote-img {
+  max-width: 45%; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-left: 30px;
+  margin-right: -85px;
+  height: auto;
+  box-shadow: 5px #444;
+  margin-top: -20px;
+  border-radius: 30px;
+
+  /* Add both shadow and border */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 4px 20px rgba(0, 0, 0, 0.2); /* Shadow effect */
+  border: 3px solid rgba(0, 0, 0, 0.2); /* Shadow border */
+}
+
+
+
+@media (max-width: 768px) {
+  .highlight-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .highlight-container img {
+    width: 180px; 
+    height: 180px;
+  }
+
+  .quote-container {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .quote-img {
+    max-width: 100%;
+    margin-left: 0;
+    margin-top: 20px;
+    width: 100%; 
+  }
+
+  .quote-text p {
+    font-size: 1.2rem;
+  }
+}
+/* Kashmiri Styling Elements */
+.chinar-heading {
+font-family: 'Philosopher', sans-serif;
+border-bottom: 2px solid #8B0000;
+display: inline-block;
+padding-bottom: 0.5rem;
+}
+
+.kashmiri-text {
+font-size: 1.2rem;
+color: #444;
+line-height: 1.8;
+text-align: justify;
+}
+
 .saffron-text {
-  color: #FF9933;
-  font-family: 'Raleway', sans-serif;
+color: #FF9933;
+font-family: 'Raleway', sans-serif;
 }
 
 .koshur-verse {
-  background: #f8f4e6;
-  border-left: 4px solid #8B0000;
-  font-style: italic;
+background: #f8f4e6;
+border-left: 4px solid #8B0000;
+font-style: italic;
 }
 
 .kashmir-border {
-  border: 2px solid #8B0000;
-  border-image: linear-gradient(45deg, #8B0000, #FFD700) 1;
+border: 2px solid #8B0000;
+border-image: linear-gradient(45deg, #8B0000, #FFD700) 1;
 }
 
 .kashmiri-proverb {
-  font-size: 1.5rem;
-  color: #2F4F4F;
-  font-family: 'Playfair Display', serif;
+font-size: 1.5rem;
+color: #2F4F4F;
+font-family: 'Playfair Display', serif;
 }
 
 .kashmiri-list li {
-  list-style-type: none;
-  padding-left: 1.5rem;
-  position: relative;
+list-style-type: none;
+padding-left: 1.5rem;
+position: relative;
 }
 
 .kashmiri-list li:before {
-  content: "🌼";
-  position: absolute;
-  left: 0;
+content: "🌼";
+position: absolute;
+left: 0;
 }
+

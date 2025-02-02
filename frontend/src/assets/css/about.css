@@ -1,0 +1,118 @@
+.instagram-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+  
+  .instagram-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .profile-header {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background: #f8f9fa;
+  }
+  
+  .profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 1rem;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .post-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  
+  .post-item {
+    aspect-ratio: 1;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  
+  .post-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.4);
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: white;
+    transition: opacity 0.3s ease;
+  }
+  
+  .post-item:hover .post-hover {
+    opacity: 1;
+  }
+  
+  .ig-footer {
+    background: #f8f9fa;
+    transition: background 0.3s ease;
+  }
+  
+  .instagram-card:hover .ig-footer {
+    background: #e9ecef;
+  }
+
+  .custom-shadow {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+  }
+  
+  .card-body:hover {
+    background-color: #f8f9fa; 
+  }
+  .card {
+    position: relative; 
+    overflow: hidden; 
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-10px); 
+  }
+  
+  .post-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: white;
+    transition: opacity 0.3s ease; 
+  }
+  
+  .card:hover .post-hover {
+    opacity: 1;
+  }
+  
+  .card-body {
+    z-index: 1; 
+  }
+  
+  .card-body h3, .card-body p {
+    z-index: 1; 
+  }
+  
+  .card-body a {
+    z-index: 1; 
+  }
+  

@@ -15,30 +15,73 @@ function About() {
       website: "https://www.kashmirshop.com/",
       bgColor: "bg-white"
     },
-    // {
-    //   logo: 'https://cdn.baraqah.in/wp-content/uploads/2024/03/baraqah-logo-white.png',
-    //   description: "Handcrafted traditional Kashmiri clothing and textiles",
-    //   website: "https://baraqah.in/",
-    //   bgColor: "bg-dark"
-    // },
-    // {
-    //   logo: 'https://www.pashmina.com/_next/image/?url=%2Fimages%2Flogo.png&w=640&q=75',
-    //   description: "Intricate embroidery and traditional Kashmiri garments",
-    //   website: "https://www.pashmina.com/",
-    //   bgColor: "bg-black"
-    // },
     {
-      logo: 'https://www.kashmirorigin.com/cdn/shop/files/logo_400x200_927d4bb5-2ce9-4f8b-b0f8-46ab9b93ab59.png?v=1731750136&width=280',
+      logo: 'https://www.pastau.com/cdn/shop/files/logo-main-2.png?v=1616143494',
       description: "Handcrafted traditional Kashmiri clothing and textiles",
-      website: "https://kashmirorigin.com/",
-      bgColor: "bg-black"
+      website: "https://www.pastau.com/",
     },
     {
       logo: 'https://koshurindia.shop/cdn/shop/files/Koshur-logo.png?v=1727457230&width=212',
       description: "Handcrafted traditional Kashmiri clothing and textiles",
       website: "https://koshurindia.shop/",
-      // bgColor: "bg-light"
-    }
+    },
+    {
+      logo: 'https://cdn.baraqah.in/wp-content/uploads/2024/03/baraqah-logo-white.png',
+      description: "Handcrafted traditional Kashmiri clothing and textiles",
+      website: "https://baraqah.in/",
+    },
+    {
+      logo: 'https://www.pashmina.com/_next/image/?url=%2Fimages%2Flogo.png&w=640&q=75',
+      description: "Intricate embroidery and traditional Kashmiri garments",
+      website: "https://www.pashmina.com/",
+    },
+    {
+      logo: 'https://www.kashmirorigin.com/cdn/shop/files/logo_400x200_927d4bb5-2ce9-4f8b-b0f8-46ab9b93ab59.png?v=1731750136&width=280',
+      description: "Handcrafted traditional Kashmiri clothing and textiles",
+      website: "https://kashmirorigin.com/",
+    },
+    
+    {
+      logo: 'https://zooni.co.uk/cdn/shop/files/Zooni_trandparent_logo_1.png?v=1711926628',
+      description: "Handcrafted traditional Kashmiri clothing and textiles",
+      website: "https://zooni.co.uk/",
+    },
+  ];
+
+  const instagramDesigners = [
+    {
+      handle: '@sarahsehar7',
+      profilePic: 'ss.png',
+      profileUrl: 'https://www.instagram.com/sarahsehar7',
+      posts: [
+        'ss1.png',
+        'ss2.png',
+        'ss3.png',
+      ],
+      bio: 'Threads of tradition, designs of today'
+    },
+    {
+      handle: '@labelbymansha',
+      profilePic: 'mn.png',
+      profileUrl: 'https://www.instagram.com/labelbymansha',
+      posts: [
+        'mn1.png',
+        'mn2.png',
+        'mn3.png',
+      ],
+      bio: 'A store of designer collection'
+    },
+    {
+      handle: '@olivecouture_',
+      profilePic: 'olive1.png',
+      profileUrl: 'https://www.instagram.com/olivecouture_',
+      posts: [
+        'pink1.png',
+        'pink2.png',
+        'pink3.png',
+      ],
+      bio: 'High End Designers Consignment.'
+    },
   ];
 
   const fashionArticles = [
@@ -65,7 +108,7 @@ function About() {
       <header className="d-flex justify-content-between align-items-center mb-4">
         <div className="d-flex align-items-center">
         <a href="/">
-          <img src={require('../assets/images/logo1.png')} alt="Yemberzal6" className="me-3 logo-size" />
+          <img src={require('../assets/images/logo1.png')} alt="Yemberzal6" className="me-2 logo-size" />
         </a>
         </div>
         <nav className="d-flex fs-4">
@@ -86,16 +129,19 @@ function About() {
             <div key={index} className="col-6 col-md-3">
               <a href={brand.website} target="_blank" rel="noopener noreferrer" className="text-decoration-none">
                 <div className={`text-center p-4 rounded ${brand.bgColor}`}>
-                  <img 
+                <img 
                     src={brand.logo} 
                     alt={`Brand logo`} 
                     className="img-fluid mb-3 brand-logo" 
-                    style={{ 
+                    style={{
                       maxHeight: '150px', 
-                      maxWidth: '150px',
-                      objectFit: 'contain'
-                    }}
+                      maxWidth: '150px', 
+                      objectFit: 'contain',
+                      filter: 'grayscale(100%) brightness(0)',
+                    }} 
                   />
+
+
                 </div>
               </a>
             </div>
@@ -103,15 +149,66 @@ function About() {
         </div>
       </section>
 
+
+       {/* Add this Instagram Section */}
+      <section id="instagram" className="py-5">
+        <div className="text-center mb-5">
+          <h2 className="display-8 mb-3">Designer Spotlights</h2>
+          <p className="text-muted">Explore Kashmiri Craftsmanship on Instagram</p>
+        </div>
+        
+        <div className="row g-4 instagram-grid">
+          {instagramDesigners.map((designer, index) => (
+            <div key={index} className="col-12 col-md-6 col-lg-4">
+              <div className="instagram-card shadow-lg">
+                <a 
+                  href={designer.profileUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-decoration-none"
+                >
+                  <div className="profile-header">
+                    <img 
+                      src={designer.profilePic} 
+                      alt={designer.handle}
+                      className="profile-pic"
+                    />
+                    <div className="profile-info">
+                      <h3 className="h6 mb-0">{designer.handle}</h3>
+                      <p className="text-muted small mb-0">{designer.bio}</p>
+                    </div>
+                  </div>
+                  
+                  <div className="post-grid">
+                    {designer.posts.map((post, postIndex) => (
+                      <div 
+                        key={postIndex} 
+                        className="post-item"
+                        style={{ backgroundImage: `url(${post})` }}
+                      >
+                      </div>
+                    ))}
+                  </div>
+                  
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+        </section>
+
       {/* Fashion Articles Section */}
       <section id="articles" className="py-5 ">
-        <div className="text-center mb-5">
-          <p className="text-muted">Discovering Kashmiri Fashion</p>
+      <div className="text-center mb-5">
+          <p className="text-muted fw-bold fs-4">Unveiling Kashmiri Fashion through دلائل (stories)</p>
         </div>
         <div className="row g-4">
           {fashionArticles.map((article, index) => (
             <div key={index} className="col-md-4">
-              <div className="card border-0 shadow-sm h-100">
+              <div className="card border-0 custom-shadow h-100">
+                <div className="post-hover">
+                  <p>Read More</p> 
+                </div>
                 <div className="card-body">
                   <h3 className="h5 mb-3">{article.title}</h3>
                   <p className="text-muted small">{article.excerpt}</p>

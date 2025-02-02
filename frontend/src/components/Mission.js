@@ -1,4 +1,3 @@
-
 import '../assets/css/mission.css'; 
 import ReactGA from 'react-ga';
 
@@ -6,17 +5,14 @@ ReactGA.initialize('G-SW7M3XVNPW');
 ReactGA.pageview(window.location.pathname + window.location.search);
 
 function CombinedPage() {
-    
-    
-
   return (
     <div className="container py-5">
       {/* Header */}
       <header className="d-flex justify-content-between align-items-center mb-4">
         <div className="d-flex align-items-center">
-        <a href="/">
-          <img src={require('../assets/images/logo1.png')} alt="Yemberzal6" className="me-3 logo-size" />
-        </a>
+          <a href="/">
+            <img src={require('../assets/images/logo1.png')} alt="Yemberzal6" className="me-3 logo-size" />
+          </a>
         </div>
         <div className="d-flex fs-4">
           <a href="/" className="me-3 text-decoration-none">home</a>
@@ -25,206 +21,47 @@ function CombinedPage() {
         </div>
       </header>
 
-      {/* Mission Section */}
-      <section id="mission" className="py-5 text-center">
-        <h2 className="mb-4" style={{ fontSize: '2.5rem', fontWeight: 'bold' }}>
-          Mission: a Homecoming 
-        </h2>
-        <p className="mb-4" style={{ fontSize: '1.2rem', color: '#555', lineHeight: '1.8' }}>
-          Yemberzal's mission is to connect people with authentic Kashmiri clothing, crafted by talented Kashmiri designers, artisans, and small businesses. Through a seamless search experience, we aim to celebrate and share the rich culture and craftsmanship of Kashmir with audiences both within the region and around the globe.
-          Bridging <em>Kasheer</em> with <em>Duniya</em>
-        </p>
-        
-      </section>
-
-      {/* About Section */}
-      <section id="about" className="py-5">
-        <header className="text-center mb-5">
-          <h2 className="display-8">The Story Behind Yemberzal</h2>
-          {/* <p className="lead display-12">Where <em>Bombur</em> (Kashmiri Bumblebee) meets Technology</p> */}
-        </header>
-
-        <article>
-          <h4>Bridging Tradition and Modernity</h4>
-          <p>
-            Yemberzal was born out of a simple idea: to make authentic Kashmiri clothing and accessories accessible to people across the globe. Growing up in Kashmir, I witnessed firsthand the artistry and craftsmanship of local designers and artisans. Their work reflects the rich cultural heritage of the region, yet finding these unique creations online was often a challenge.
-          </p>
-          <p>
-            After living outside of Kashmir, I realized just how difficult it is to connect with authentic Kashmiri fashion. It isn't just about the clothes—it is about preserving the stories and traditions they represent. This inspired me to create Yemberzal, a platform that bridges the gap between Kashmir’s timeless fashion and the world.
-          </p>
-
-          <h4>A One-Person Journey</h4>
-          <p>
-            Yemberzal is a labor of love, created and managed by one person with a passion for Kashmiri culture and technology. With this platform, I aim to celebrate the work of Kashmiri artisans while making their creations easily accessible. My goal is to ensure that the beauty and craftsmanship of Kashmiri clothing resonate with people everywhere.
-          </p>
-
-          <h4>Preserving Kashmiri Heritage</h4>
-          <p>
-            At Yemberzal, I am committed to showcasing the intricate artistry of Kashmiri clothing while embracing modern design. From the elegant Pashmina shawls to the traditional embroidered 'Pheran,' every piece reflects centuries of cultural heritage. By connecting artisans directly with a global audience, Yemberzal hopes to preserve these traditions for future generations.
-          </p>
-
-          <h4>Vision</h4>
-          <p>
-            Yemberzal is more than just a platform; it’s a celebration of culture, tradition, and craftsmanship. My hope is that through this initiative, I can contribute to keeping Kashmiri heritage alive while inspiring a deeper appreciation for the artistry behind every garment. Whether you're from Kashmir or halfway across the world, Yemberzal invites you to discover and cherish the magic of Kashmiri fashion.
-          </p>
-
-        </article>
-        <div className="quote-container mt-5 py-5">
-            <div className="quote-text">
-                <blockquote className="blockquote">
-                    {/* <p style={{ fontSize: '1.5rem', fontStyle: 'italic', color: '#333', lineHeight: '1.5' }}>
-                        "The art of Kashmir is the soul of the valley woven into every thread.." <br />
-                        Yemberzal - My Love Letter to Kashmir 💌
-                    </p> */}
-                    <footer className="blockquote-footer mt-4">
-                        <cite style={{ fontSize: '1.2rem', color: '#555' }}>Yemberzal - My Love Letter to Kashmir 💌</cite>
-                    </footer>
-                </blockquote>
-            </div>
-            <img
-                src="https://www.pashwrap.com/cdn/shop/articles/2024-11-15_11.43.20_-_An_intricate_close-up_image_of_a_Kashmiri_artisan_s_hands_working_on_a_pashmina_shawl._The_artisan_is_stitching_fine_embroidery_with_vibrant_threads_i.webp?v=1731651914"
-                alt="Kashmiri Craftsmanship"
-                className="quote-img"
-            />
+      <div className="quote-container mt-1 py-5">
+        <div className="quote-text">
+          <blockquote className="blockquote">
+          <h4 className="section-title">
+              <span style={{fontSize: '1rem'}}>یمبرزل کیہ چھُ؟</span>  Why YEMBERZAL?
+            </h4>            <p className="section-paragraph">
+            Yemberzal (Kashmiri for crocus flower) symbolizes resilience and hope, mirroring Kashmir’s artisans thriving amid adversity. The name reflects the platform’s mission: bridging their timeless craftsmanship with modern technology, like the crocus bridging winter’s harshness with fleeting beauty.
+            </p>
+            <hr />
+            <h4 className="section-title">MISSION</h4>
+            
+            <p className="section-paragraph">
+              Yemberzal's mission is to connect people with authentic Kashmiri clothing, crafted by talented Kashmiri designers, artisans, and small businesses. Through a seamless search experience, we aim to celebrate and share the rich culture and craftsmanship of Kashmir with audiences both within the region and around the globe.
+              Bridging <em>Kasheer</em> with <em>Duniya</em>
+            </p>
+            <hr />
+            <h4 className="section-title">Story Behind YEMBERZAL</h4>
+            <p className="section-paragraph">
+              Yemberzal was born out of a simple idea: to make authentic Kashmiri clothing and accessories accessible to people across the globe. <br/>
+              Yemberzal is a labor of love, created and managed by one person with a passion for Kashmiri culture and technology. With this platform, I aim to celebrate the work of Kashmiri artisans while making their creations easily accessible. My goal is to ensure that the beauty and craftsmanship of Kashmiri clothing resonate with people everywhere.
+            </p>
+            <footer className="blockquote-footer mt-4">
+              <cite className="footer-text">My Love Letter to Kashmir 💌</cite>
+            </footer>
+          </blockquote>
         </div>
-      </section>
+        <img
+          src="https://www.pashwrap.com/cdn/shop/articles/2024-11-15_11.43.20_-_An_intricate_close-up_image_of_a_Kashmiri_artisan_s_hands_working_on_a_pashmina_shawl._The_artisan_is_stitching_fine_embroidery_with_vibrant_threads_i.webp?v=1731651914"
+          alt="Kashmiri Craftsmanship"
+          className="quote-img"
+        />
+      </div>
+      {/* Footer Section with disclaimer */}
+      <footer className="text-center mt-5">
+        <cite className="footer-text">
+          Disclaimer: I do not earn money of this. Neither do I sell any products. <br/>This is a search engine to help you find your next Kashmiri outfit seamlessly. 
+        </cite>
+      </footer>
+
     </div>
   );
 }
 
 export default CombinedPage;
-
-
-
-// import React, { useState, useEffect } from 'react';
-// import '../assets/css/mission.css';
-// import { supabase } from '../supabaseClient';
-
-// function Mission() {
-//     const [visitCount, setVisitCount] = useState(0);
-
-//     useEffect(() => {
-//         // Fetch initial visit count from Supabase
-//         async function fetchVisitCount() {
-//             try {
-//                 const { data, error } = await supabase
-//                     .from('visit_counts')
-//                     .select('count')
-//                     .single();
-                
-//                 if (error) throw error;
-                
-//                 setVisitCount(data.count);
-//             } catch (error) {
-//                 console.error('Error fetching visit count:', error);
-//             }
-//         }
-
-//         // Increment visit count
-//         async function incrementVisitCount() {
-//             try {
-//                 const response = await fetch('/api/increment-visit-count/', {
-//                     method: 'POST',
-//                     headers: {
-//                         'Content-Type': 'application/json',
-//                     },
-//                 });
-                
-//                 if (!response.ok) {
-//                     throw new Error('Failed to increment visit count');
-//                 }
-                
-//                 const data = await response.json();
-//                 setVisitCount(data.count);
-//             } catch (error) {
-//                 console.error('Error incrementing visit count:', error);
-//             }
-//         }
-
-//         fetchVisitCount();
-//         incrementVisitCount();
-//     }, []);
-
-//   return (
-//     <div className="container py-5">
-//       {/* Header */}
-//       <header className="d-flex justify-content-between align-items-center mb-4">
-//         <div className="d-flex align-items-center">
-//         <img src={require('../assets/images/logo1.png')} alt="Yemberzal6" className="me-3 logo-size" />
-//         </div>
-//         <div className="d-flex fs-4">
-//           <a href="/" className="me-3 text-decoration-none">home</a>
-//           <a href="/about" className="me-3 text-decoration-none">about</a>
-//           <a href="/contact" className="text-decoration-none">contact</a>
-//         </div>
-//       </header>
-
-//       {/* Mission Section */}
-//       <section id="mission" className="py-5 text-center">
-//         <h2 className="mb-4" style={{ fontSize: '2.5rem', fontWeight: 'bold' }}>Our Mission <span style={{fontSize: '1.5rem', fontWeight: 'lighter'}}>{visitCount.toLocaleString()}</span></h2> 
-//             {/* span role="img" aria-label="visitors"></span> {visitCount.toLocaleString()} */}
-//         <p className="mb-4" style={{ fontSize: '1.2rem', color: '#555', lineHeight: '1.8' }}>
-//         Yemberzal's mission is to connect people with authentic Kashmiri clothing, crafted by talented Kashmiri designers, artisans, and small businesses. Through a seamless search experience, we aim to celebrate and share the rich culture and craftsmanship of Kashmir with audiences both within the region and around the globe.
-//         </p>
-        
-//         {/* Key Highlights */}
-//         {/* <div className="d-flex justify-content-center align-items-center flex-wrap mt-5">
-//             <div className="highlight-container">
-//                 <img
-//                     src="https://upload.wikimedia.org/wikipedia/commons/c/c4/Pheran2.jpg"
-//                     alt="Cultural Heritage"
-//                     className="highlight-img"
-//                 />
-//                 <div className="highlight-text">
-//                     <h4>Preserving Heritage</h4>
-//                     <p>Showcasing the timeless beauty of Kashmiri art and tradition.</p>
-//                 </div>
-//             </div>
-//             <div className="highlight-container row-reverse">
-//                 <img
-//                     src="https://theindiancouture.com/cdn/shop/articles/c522a51f-4ae9-44ac-8fb2-63de054b118f.jpg?v=1673457625"
-//                     alt="Empowering Artisans"
-//                     className="highlight-img"
-//                 />
-//                 <div className="highlight-text">
-//                     <h4>Empowering Artisans</h4>
-//                     <p>Supporting local artisans by providing a platform for their work.</p>
-//                 </div>
-//             </div>
-//             <div className="highlight-container">
-//                 <img
-//                     src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Kashmiri.jpg"
-//                     alt="Global Platform"
-//                     className="highlight-img"
-//                 />
-//                 <div className="highlight-text">
-//                     <h4>Global Reach</h4>
-//                     <p>Bridging the gap between Kashmiri craftsmanship and the global audience.</p>
-//                 </div>
-//             </div>
-//         </div> */}
-
-//         {/* Quote */}
-//         <div className="quote-container mt-5 py-5">
-//             <div className="quote-text">
-//                 <blockquote className="blockquote">
-//                     <p style={{ fontSize: '2rem', fontStyle: 'italic', color: '#333', lineHeight: '1.5' }}>
-//                         "The art of Kashmir is the soul of the valley woven into every thread.."
-//                     </p>
-//                     <footer className="blockquote-footer mt-4">
-//                         <cite style={{ fontSize: '1.2rem', color: '#555' }}>YT</cite>
-//                     </footer>
-//                 </blockquote>
-//             </div>
-//             <img
-//                 src="https://www.pashwrap.com/cdn/shop/articles/2024-11-15_11.43.20_-_An_intricate_close-up_image_of_a_Kashmiri_artisan_s_hands_working_on_a_pashmina_shawl._The_artisan_is_stitching_fine_embroidery_with_vibrant_threads_i.webp?v=1731651914"
-//                 alt="Kashmiri Craftsmanship"
-//                 className="quote-img"
-//             />
-//         </div>
-//       </section>
-//     </div>
-//   );
-// }
-
-// export default Mission;
