@@ -35,6 +35,7 @@ function CombinedPage() {
             <p className="section-paragraph">
               Yemberzal's mission is to connect people with authentic Kashmiri clothing, crafted by talented Kashmiri designers, artisans, and small businesses. Through a seamless search experience, we aim to celebrate and share the rich culture and craftsmanship of Kashmir with audiences both within the region and around the globe.
               Bridging <em>Kasheer</em> with <em>Duniya</em>
+              The best part? All the brands you love, all in one place.
             </p>
             <hr />
             <h4 className="section-title">Story Behind YEMBERZAL</h4>
@@ -56,7 +57,7 @@ function CombinedPage() {
       {/* Footer Section with disclaimer */}
       <footer className="text-center mt-5">
         <cite className="footer-text">
-          Disclaimer: I do not earn money of this. Neither do I sell any products. <br/>This is a search engine to help you find your next Kashmiri outfit seamlessly. 
+          Disclaimer: I do not make money off of this, nor do I sell any products. <br/>YEMBERZAL is simply a search engine to make finding Kashmiri Fashion seamless.
         </cite>
       </footer>
 
