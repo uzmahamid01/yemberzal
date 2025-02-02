@@ -54,31 +54,31 @@ function About() {
       profilePic: require('../assets/images/ss.png'),
       profileUrl: 'https://www.instagram.com/sarahsehar7',
       posts: [
-        '/ss1.png',
-        '/ss2.png',
-        '/ss3.png',
+        require('../assets/images/ss1.png'),
+        require('../assets/images/ss2.png'),
+        require('../assets/images/ss3.png'),
       ],
       bio: 'Threads of tradition, designs of today'
     },
     {
       handle: '@labelbymansha',
-      profilePic: '/mn.png',
+      profilePic: require('../assets/images/mn.png'),
       profileUrl: 'https://www.instagram.com/labelbymansha',
       posts: [
-        '/mn1.png',
-        '/mn2.png',
-        '/mn3.png',
+        require('../assets/images/mn1.png'),
+        require('../assets/images/mn2.png'),
+        require('../assets/images/mn3.png'),
       ],
       bio: 'A store of designer collection'
     },
     {
       handle: '@olivecouture_',
-      profilePic: '/olive1.png',
+      profilePic: require('../assets/images//olive1.png'),
       profileUrl: 'https://www.instagram.com/olivecouture_',
       posts: [
-        '/pink1.png',
-        '/pink2.png',
-        '/pink3.png',
+        require('../assets/images//pink1.png'),
+        require('../assets/images//pink2.png'),
+        require('../assets/images//pink3.png'),
       ],
       bio: 'High End Designers Consignment.'
     },
