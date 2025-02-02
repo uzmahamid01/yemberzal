@@ -51,7 +51,7 @@ function About() {
   const instagramDesigners = [
     {
       handle: '@sarahsehar7',
-      profilePic: '/ss.png',
+      profilePic: require('../assets/images/ss.png'),
       profileUrl: 'https://www.instagram.com/sarahsehar7',
       posts: [
         '/ss1.png',
